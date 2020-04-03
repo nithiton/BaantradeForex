@@ -13,34 +13,32 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<title>Home 13 - Minimag</title>
+	<title>{{ env('APP_NAME') }}</title>
 
 	<!-- Standard Favicon -->
-	<link rel="icon" type="image/x-icon" href="assets/images//favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="{{ asset('minimag/images/favicon.ico') }}/" />
 	
 	<!-- For iPhone 4 Retina display: -->
-	<link rel="apple-touch-icon-precomposed" href="assets/images//apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="{{ asset('minimag/images/apple-touch-icon-114x114-precomposed.png') }}/">
 	
 	<!-- For iPad: -->
-	<link rel="apple-touch-icon-precomposed" href="assets/images//apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="{{ asset('minimag/images/apple-touch-icon-72x72-precomposed.png') }}/">
 	
 	<!-- For iPhone: -->
-	<link rel="apple-touch-icon-precomposed" href="assets/images//apple-touch-icon-57x57-precomposed.png">	
+	<link rel="apple-touch-icon-precomposed" href="{{ asset('minimag/images/apple-touch-icon-57x57-precomposed.png') }}/">
 	
 	<!-- Library - Google Font Familys -->
 	<link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700%7cMontserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 	
-	<link rel="stylesheet" type="text/css" href="assets/revolution/css/settings.css">
-	
 	<!-- Library -->
-    <link href="assets/css/lib.css" rel="stylesheet">
+    <link href="{{ asset('minimag/css/lib.css') }}" rel="stylesheet">
 	
 	<!-- Custom - Common CSS -->
-	<link rel="stylesheet" href="assets/css/rtl.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="{{ asset('minimag/css/rtl.css') }}/">
+	<link rel="stylesheet" type="text/css" href="{{ asset('minimag/css/style.css') }}">
 
 	<!--[if lt IE 9]>
-		<script src="js/html5/respond.min.js"></script>
+		<script src="{{ asset('minimag/js/html5/respond.min.js') }}"></script>
     <![endif]-->
 	
 </head>
@@ -70,7 +68,7 @@
 							</ul>
 						</div>
 						<div class="col-lg-4 logo-block">
-							<a href="index.html" title="Logo">minimag</a>
+							<a href="index.html" title="Logo">{{ env('APP_NAME') }}</a>
 						</div>
 						<div class="col-lg-4 col-6">
 							<ul class="top-right user-info">
@@ -524,14 +522,14 @@
 	</footer><!-- Footer Main /- -->
 	
 	<!-- JQuery v1.12.4 -->
-	<script src="assets/js/jquery-1.12.4.min.js"></script>
+	<script src="{{ asset('minimag/js/jquery-1.12.4.min.js') }}"></script>
 
 	<!-- Library - Js -->
-	<script src="assets/js/popper.min.js"></script>
-	<script src="assets/js/lib.js"></script>
+	<script src="{{ asset('minimag/js/popper.min.js') }}"></script>
+	<script src="{{ asset('minimag/js/lib.js') }}"></script>
 	
 	<!-- Library - Theme JS -->
-	<script src="assets/js/functions.js"></script>
+	<script src="{{ asset('minimag/js/functions.js') }}"></script>
 	
 </body>
 </html>
