@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 Route::get('/', function () {return view('home');})->name('home');
-Route::Resource('news','NewsController')->only(['index','show']);
-Route::Resource('activities','ActivitiesController')->only(['index','show']);
-Route::Resource('posts','Controller')->only(['index','show']);
-Route::Resource('learning','Controller')->only(['index','show']);
+Route::Resource('news','NewsController');
+Route::Resource('activities','ActivitiesController');
+Route::Resource('posts','PostsController');
+Route::Resource('learning','Controller');
 Route::get('about_us','MainController@indexAboutUs')->name('about_us');
 Route::fallback(function () {
     //

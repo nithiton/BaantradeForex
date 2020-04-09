@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
+use App\Models\Posts;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,19 +14,19 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::paginate(env('PER_PAGE'));
-        return view('news.index',compact('news'));
+        $posts = Posts::paginate(env('PER_PAGE'));
+        return view('posts.index',compact('posts'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  News  $news
+     * @param  \App\Models\Posts  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(News $news)
+    public function show(Posts $post)
     {
-        return view('news.show',['new'=>$news]);
+        return view('posts.show',['post'=>$post]);
     }
 
 }

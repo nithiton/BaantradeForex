@@ -102,7 +102,7 @@
                         <li><a class="nav-link " title="Home" href="{{ route('home') }}">Home</a></li>
                         <li><a class="nav-link " title="News" href="{{ route('news.index') }}">News</a></li>
                         <li><a class="nav-link " title="Activities" href="{{ route('activities.index') }}">Activities</a></li>
-                        <li><a class="nav-link " title="Posts" href="">Posts</a></li>
+                        <li><a class="nav-link " title="Posts" href="{{ route('posts.index') }}">Posts</a></li>
                         <li class="dropdown">
                             <i class="ddl-switch fa fa-angle-down"></i>
                             <a class="nav-link dropdown-toggle" title="Learning" href="">Learning</a>
