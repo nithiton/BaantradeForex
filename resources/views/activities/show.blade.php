@@ -24,7 +24,7 @@
                                             <span class="post-date">{{ date('F j,Y',strtotime($activity->created_at)) }}</span>
                                         </div>
                                     </div>
-                                    {{ $activity->content }}
+                                    {!! $activity->content !!}
                                 </div>
                             </article>
                         </div><!-- Content Area /- -->

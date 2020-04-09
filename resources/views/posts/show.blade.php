@@ -24,12 +24,7 @@
                                             <span class="post-date">{{ date('F j,Y',strtotime($post->created_at)) }}</span>
                                         </div>
                                     </div>
-                                    {{--{!! $post->content !!}--}}
-                                    <p>These cases are perfectly simple and easy.</p>
-                                    <blockquote>
-                                        <p>“To live is the rarest thing in the”</p>
-                                        <span>Oscar Wilde</span>
-                                    </blockquote>
+                                    {!! $post->content !!}
                                 </div>
                             </article>
                         </div><!-- Content Area /- -->
