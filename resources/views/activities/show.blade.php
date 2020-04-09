@@ -17,14 +17,14 @@
                                 </div>
                                 <div class="entry-content">
                                     <div class="entry-header">
-                                        <span class="post-category"><a href="#" title="{{ $new->category }}">{{ $new->category }}</a></span>
-                                        <h3 class="entry-title">{{ $new->title }}</h3>
+                                        <span class="post-category"><a href="#" title="activity">activity</a></span>
+                                        <h3 class="entry-title">{{ $activity->title }}</h3>
                                         <div class="post-meta">
                                             <span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
-                                            <span class="post-date">{{ date('F j,Y',strtotime($new->created_at)) }}</span>
+                                            <span class="post-date">{{ date('F j,Y',strtotime($activity->created_at)) }}</span>
                                         </div>
                                     </div>
-                                    {{ $new->content }}
+                                    {{ $activity->content }}
                                 </div>
                             </article>
                         </div><!-- Content Area /- -->

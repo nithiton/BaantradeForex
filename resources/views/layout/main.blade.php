@@ -101,7 +101,7 @@
                     <ul class="navbar-nav">
                         <li><a class="nav-link " title="Home" href="{{ route('home') }}">Home</a></li>
                         <li><a class="nav-link " title="News" href="{{ route('news.index') }}">News</a></li>
-                        <li><a class="nav-link " title="Activities" href="">Activities</a></li>
+                        <li><a class="nav-link " title="Activities" href="{{ route('activities.index') }}">Activities</a></li>
                         <li><a class="nav-link " title="Posts" href="">Posts</a></li>
                         <li class="dropdown">
                             <i class="ddl-switch fa fa-angle-down"></i>

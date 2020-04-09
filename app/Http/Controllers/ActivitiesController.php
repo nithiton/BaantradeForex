@@ -2,21 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
+use App\Models\Activities;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class ActivitiesController extends Controller
 {
-    /**
-     * Instantiate a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['index','show']);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,19 +14,19 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::paginate(env('PER_PAGE'));
-        return view('news.index',compact('news'));
+        $activities = Activities::paginate(env('PER_PAGE'));
+        return view('activities.index',compact('activities'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  News  $news
+     * @param  Activities $activity
      * @return \Illuminate\Http\Response
      */
-    public function show(News $news)
+    public function show(Activities $activity)
     {
-        return view('news.show',['new'=>$news]);
+        return view('activities.show',['activity'=>$activity]);
     }
 
 //    /**

@@ -12,14 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {return view('home');})->name('home');
-Route::Resource('news','NewsController')->except(['']);
-Route::Resource('activities','Controller')->except(['']);
-Route::Resource('posts','Controller')->except(['']);
-Route::Resource('learning','Controller')->except(['']);
+Route::Resource('news','NewsController')->only(['index','show']);
+Route::Resource('activities','ActivitiesController')->only(['index','show']);
+Route::Resource('posts','Controller')->only(['index','show']);
+Route::Resource('learning','Controller')->only(['index','show']);
 Route::get('about_us','MainController@indexAboutUs')->name('about_us');
 Route::fallback(function () {
     //
     return view('errors.404');
 });
+
+

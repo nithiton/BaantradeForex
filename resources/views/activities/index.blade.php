@@ -5,21 +5,19 @@
         <main class="site-main">
 
             <!-- Page Content -->
-            <div class="container-fluid no-left-padding no-right-padding page-content blog-paralle-post">
+            <div class="container-fluid no-left-padding no-right-padding page-content">
                 <!-- Container -->
                 <div class="container">
-                    <!-- Row -->
                     <div class="row">
                         <!-- Content Area -->
                         <div class="col-lg-8 col-md-6 content-area">
                             <!-- Row -->
                             <div class="row">
-                                @forelse($news as $index => $new)
-                                    @component('component.news.content')
-                                        @slot('route'){{ route('news.show',[$new->slug]) }}@endslot
-                                        @slot('title'){{ $new->title }}@endslot
-                                        @slot('content'){{ $new->short_content }}@endslot
-                                        @slot('category'){{ $new->category }}@endslot
+                                @forelse($activities as $index => $activity)
+                                    @component('component.activities.content')
+                                        @slot('route'){{ route('activities.show',[$activity->slug]) }}@endslot
+                                        @slot('title'){{ $activity->title }}@endslot
+                                        @slot('content'){{ $activity->short_content }}@endslot
                                     @endcomponent
                                 @empty
                                     @component('component.no_content')
@@ -27,14 +25,14 @@
                                 @endforelse
                             </div><!-- Row /- -->
                             <!-- Pagination -->
-                            {{ $news->onEachSide(2)->links('layout.pagination.minimag') }}
+                            {{ $activities->onEachSide(2)->links('layout.pagination.minimag') }}
                             <!-- Pagination /- -->
-                        </div><!-- Content Area -->
+                        </div><!-- Content Area /- -->
                         <!-- Widget Area -->
                         @component('component.widget_area_ad')
                         @endcomponent
                         <!-- Widget Area /- -->
-                    </div><!-- Row /- -->
+                    </div>
                 </div><!-- Container /- -->
             </div><!-- Page Content /- -->
 
