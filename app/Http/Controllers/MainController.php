@@ -14,4 +14,13 @@ class MainController extends Controller
     public function indexAboutUs(){
         return view('about_us');
     }
+
+    /**
+     * Display a admin home page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexAdmin(){
+        return view('admin.home');
+    }
 }

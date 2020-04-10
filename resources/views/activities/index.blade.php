@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 @section('content')
     <div class="main-container">
 
@@ -25,7 +25,7 @@
                                 @endforelse
                             </div><!-- Row /- -->
                             <!-- Pagination -->
-                            {{ $activities->onEachSide(2)->links('layout.pagination.minimag') }}
+                            {{ $activities->onEachSide(2)->links('layouts.pagination.minimag') }}
                             <!-- Pagination /- -->
                         </div><!-- Content Area /- -->
                         <!-- Widget Area -->

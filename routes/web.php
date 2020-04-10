@@ -12,13 +12,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('/', function () {return view('home');})->name('home');
-Route::Resource('news','NewsController');
-Route::Resource('activities','ActivitiesController');
-Route::Resource('posts','PostsController');
-Route::Resource('learning','Controller');
+Route::Resource('news','NewsController')
+    ->parameters(['news'=>'news:slug'])->only(['index','show']);
+
+Route::Resource('activities','ActivitiesController')
+    ->parameters(['activities'=>'activity:slug'])->only(['index','show']);
+
+Route::Resource('posts','PostsController')
+    ->parameters(['posts'=>'post:slug'])->only(['index','show']);
+//Route::Resource('learning','Controller');
 Route::get('about_us','MainController@indexAboutUs')->name('about_us');
+
+Route::name('admin.')->prefix('admin')->group(function() {
+    Route::get('/','MainController@indexAdmin')->name('home');
+    Route::Resource('news','NewsController');
+    Route::Resource('activities','ActivitiesController');
+    Route::Resource('posts','PostsController');
+});
 Route::fallback(function () {
     //
     return view('errors.404');
