@@ -27,13 +27,24 @@ Route::get('about_us','MainController@indexAboutUs')->name('about_us');
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
     Route::get('/','MainController@indexAdmin')->name('home');
+
     Route::bind('news_trash', function($id) {
         return \App\Models\News::withTrashed()->find($id);
     });
     Route::post('news/{news_trash}/restore','AdminNewsController@restore')->name('news.restore');
     Route::Resource('news','AdminNewsController')->parameters(['news'=>'news:slug']);
-    Route::Resource('activities','ActivitiesController')->parameters(['activities'=>'activity:slug']);
-    Route::Resource('posts','PostsController')->parameters(['posts'=>'post:slug']);
+
+    Route::bind('activity_trash', function($id) {
+        return \App\Models\Activities::withTrashed()->find($id);
+    });
+    Route::post('activities/{activity_trash}/restore','AdminActivitiesController@restore')->name('activities.restore');
+    Route::Resource('activities','AdminActivitiesController')->parameters(['activities'=>'activity:slug']);
+
+    Route::bind('post_trash', function($id) {
+        return \App\Models\Posts::withTrashed()->find($id);
+    });
+    Route::post('posts/{post_trash}/restore','AdminPostsController@restore')->name('posts.restore');
+    Route::Resource('posts','AdminPostsController')->parameters(['posts'=>'post:slug']);
 });
 Route::fallback(function () {
     //

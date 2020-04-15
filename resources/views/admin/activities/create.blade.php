@@ -7,9 +7,9 @@
             <div class="col ml-4 mr-4">
                 <div class="card card-secondary pb-3">
                     <div class="card-header">
-                        <h3 class="card-title">Create news</h3>
+                        <h3 class="card-title">Create Activity</h3>
                     </div>
-                    <form method="post" action="{{ route('admin.news.store') }}">
+                    <form method="post" action="{{ route('admin.activities.store') }}">
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">

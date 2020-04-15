@@ -20,7 +20,7 @@ class CreateNewsTable extends Migration
             $table->string('category');
             $table->text('short_content');
             $table->longText('content');
-            $table->string('header')->nullable();
+            $table->string('cover_image')->nullable();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

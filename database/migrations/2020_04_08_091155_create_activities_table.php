@@ -19,7 +19,7 @@ class CreateActivitiesTable extends Migration
             $table->string('title');
             $table->text('short_content');
             $table->longText('content');
-            $table->string('header')->nullable();
+            $table->string('cover_image')->nullable();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

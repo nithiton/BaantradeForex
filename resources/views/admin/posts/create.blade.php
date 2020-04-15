@@ -7,9 +7,9 @@
             <div class="col ml-4 mr-4">
                 <div class="card card-secondary pb-3">
                     <div class="card-header">
-                        <h3 class="card-title">Create news</h3>
+                        <h3 class="card-title">Create Post</h3>
                     </div>
-                    <form method="post" action="{{ route('admin.news.store') }}">
+                    <form method="post" action="{{ route('admin.posts.store') }}">
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">
@@ -39,6 +39,14 @@
                                           placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
                                 >{{ old('content') }}</textarea>
                                 @error('content')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAuthor">Author name</label>
+                                <input type="text" id="inputAuthor" name="author" class="form-control @error('author') is-invalid @enderror"
+                                       autofocus value="{{ old('author') }}">
+                                @error('author')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

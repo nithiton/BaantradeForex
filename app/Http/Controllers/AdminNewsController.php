@@ -49,7 +49,7 @@ class AdminNewsController extends Controller
         $news->category = 'news';
         $news->short_content = $validatedData['short_content'];
         $news->content = $validatedData['content'];
-        if(!$news->save()) {
+        if($news->save()) {
             return redirect(route('admin.news.index'))->with(['success' => 'create success.']);
         }else{
             return redirect(route('admin.news.create'))->with(['error' => 'create failed.']);
