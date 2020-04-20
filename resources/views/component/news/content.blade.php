@@ -9,7 +9,7 @@
         </div>
         <div class="entry-content">
             <div class="entry-header">
-                <span class="post-category"><a href="#" title="news">News</a></span>
+                <span class="post-category"><a href="#" title="News">News</a></span>
                 <h3 class="entry-title"><a href="{{ $route }}" title="{{ $title }}">{{ $title}} </a></h3>
             </div>
             <p>{{ $content }}</p>

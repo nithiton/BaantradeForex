@@ -49,11 +49,11 @@ class AdminActivitiesController extends Controller
         $activity->slug = $validatedData['slug'];
         $activity->short_content = $validatedData['short_content'];
         $activity->content = $validatedData['content'];
-        $imageName = 'upload/activities/news/'.$activity->getNextId().'/cover_image.'.$validatedData['cover_image']->extension();
+        $imageName = 'upload/images/activities/'.$activity->getNextId().'/cover_image.'.$validatedData['cover_image']->extension();
         $activity->cover_image = $imageName;
         //check if move file image fail
         if(!$request->cover_image->move(public_path('upload/images/activities/'.$activity->getNextId().'/'), $imageName)){
-            return redirect(route('admin.news.create'))->with(['error' => 'move file failed.']);
+            return redirect(route('admin.activities.create'))->with(['error' => 'move file failed.']);
         }
         if($activity->save()) {
             return redirect(route('admin.activities.index'))->with(['success' => 'create success.']);

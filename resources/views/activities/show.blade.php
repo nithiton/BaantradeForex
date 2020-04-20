@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="entry-content">
                                     <div class="entry-header">
-                                        <span class="post-category"><a href="#" title="activity">activity</a></span>
+                                        <span class="post-category"><a href="#" title="Activity">Activity</a></span>
                                         <h3 class="entry-title">{{ $activity->title }}</h3>
                                         <div class="post-meta">
                                             {{--<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>--}}

@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <label for="inputCoverImage">Cover image</label>
                                 <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                                    <input id="inputCoverImage" name="cover_image" type="file" onchange="readURL(this);"
+                                    <input id="inputCoverImage" name="cover_image" type="file" onchange="readURL(this);" accept="image/jpeg,png,jpg"
                                            value="{{ old('cover_image') }}" class="form-control border-0 @error('cover_image') is-invalid @enderror">
                                     <label id="inputCoverImage-label" for="inputCoverImage" class="font-weight-light text-muted">Choose file</label>
                                     <div class="input-group-append">

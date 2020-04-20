@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Posts extends Model
 {
@@ -21,6 +22,12 @@ class Posts extends Model
         static::addGlobalScope('lasted', function (Builder $builder) {
             $builder->orderBy('created_at', 'desc');
         });
+    }
+
+    public function getNextId()
+    {
+        $statement = DB::select("show table status like 'posts'");
+        return $statement[0]->Auto_increment;
     }
 
 }

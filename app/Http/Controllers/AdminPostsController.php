@@ -42,6 +42,7 @@ class AdminPostsController extends Controller
             'short_content' => ['bail','required', 'max:255'],
             'content' => ['bail','required'],
             'author' => ['bail','max:255'],
+            'cover_image' => ['bail','image','mimes:jpeg,png,jpg','max:2048']
         ]);
 
         $post = new Posts();
@@ -50,6 +51,12 @@ class AdminPostsController extends Controller
         $post->short_content = $validatedData['short_content'];
         $post->content = $validatedData['content'];
         $post->author = $validatedData['author'];
+        $imageName = 'upload/images/posts/'.$post->getNextId().'/cover_image.'.$validatedData['cover_image']->extension();
+        $post->cover_image = $imageName;
+        //check if move file image fail
+        if(!$request->cover_image->move(public_path('upload/images/posts/'.$post->getNextId().'/'), $imageName)){
+            return redirect(route('admin.posts.create'))->with(['error' => 'move file failed.']);
+        }
         if($post->save()) {
             return redirect(route('admin.posts.index'))->with(['success' => 'create success.']);
         }else{
