@@ -142,5 +142,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminlte/js/demo.js') }}"></script>
 @yield('after-script')
+@yield('after-style')
 </body>
 </html>

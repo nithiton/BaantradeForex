@@ -2,10 +2,10 @@
     <div class="type-post">
         <div class="entry-cover">
             <div class="post-meta">
-                <span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
-                <span class="post-date"><a href="#">MARCH 17, 2017</a></span>
+                {{--<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>--}}
+                <span class="post-date"><a href="#">{{ $created_at }}</a></span>
             </div>
-            <a href="#"><img src="http://placehold.it/330x247" alt="Post" /></a>
+            <a href="{{ $route }}"><img src="{{ $cover_image }}" alt="Post" style="width: 330px;height: 247px;object-fit: contain;"/></a>
         </div>
         <div class="entry-content">
             <div class="entry-header">

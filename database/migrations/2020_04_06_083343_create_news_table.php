@@ -17,7 +17,6 @@ class CreateNewsTable extends Migration
             $table->id('id')->index('primary_key');
             $table->string('slug')->index('news_slug');
             $table->string('title');
-            $table->string('category');
             $table->text('short_content');
             $table->longText('content');
             $table->string('cover_image')->nullable();

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class News extends Model
 {
@@ -21,5 +22,11 @@ class News extends Model
         static::addGlobalScope('lasted', function (Builder $builder) {
             $builder->orderBy('created_at', 'desc');
         });
+    }
+
+    public function getNextId()
+    {
+        $statement = DB::select("show table status like 'news'");
+        return $statement[0]->Auto_increment;
     }
 }
