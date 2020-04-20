@@ -49,7 +49,7 @@
                                            value="{{ old('cover_image') }}" class="form-control border-0 @error('cover_image') is-invalid @enderror">
                                     <label id="inputCoverImage-label" for="inputCoverImage" class="font-weight-light text-muted">Choose file</label>
                                     <div class="input-group-append">
-                                        <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fas fa-cloud-upload-alt mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                                        <label for="inputCoverImage" class="btn btn-light m-0 rounded-pill px-4"> <i class="fas fa-cloud-upload-alt mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
                                     </div>
                                 </div>
                                 @error('cover_image')

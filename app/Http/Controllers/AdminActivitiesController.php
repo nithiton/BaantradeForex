@@ -41,6 +41,7 @@ class AdminActivitiesController extends Controller
             'slug' => ['bail','required', 'unique:news', 'max:255'],
             'short_content' => ['bail','required', 'max:255'],
             'content' => ['bail','required'],
+            'cover_image' => ['bail','image','mimes:jpeg,png,jpg','max:2048']
         ]);
 
         $activity = new Activities();
@@ -48,6 +49,12 @@ class AdminActivitiesController extends Controller
         $activity->slug = $validatedData['slug'];
         $activity->short_content = $validatedData['short_content'];
         $activity->content = $validatedData['content'];
+        $imageName = 'upload/activities/news/'.$activity->getNextId().'/cover_image.'.$validatedData['cover_image']->extension();
+        $activity->cover_image = $imageName;
+        //check if move file image fail
+        if(!$request->cover_image->move(public_path('upload/images/activities/'.$activity->getNextId().'/'), $imageName)){
+            return redirect(route('admin.news.create'))->with(['error' => 'move file failed.']);
+        }
         if($activity->save()) {
             return redirect(route('admin.activities.index'))->with(['success' => 'create success.']);
         }else{

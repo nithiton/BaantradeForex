@@ -20,7 +20,6 @@
                                         @slot('cover_image'){{ isset($new->cover_image) ? asset($new->cover_image) : 'http://placehold.it/330x247' }}@endslot
                                         @slot('title'){{ $new->title }}@endslot
                                         @slot('content'){{ $new->short_content }}@endslot
-                                        @slot('category'){{ $new->category }}@endslot
                                         @slot('created_at'){{ date('F j,Y',strtotime($new->created_at)) }}@endslot
                                     @endcomponent
                                 @empty
