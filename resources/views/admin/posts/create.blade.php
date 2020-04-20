@@ -59,10 +59,10 @@
                                     <div class="input-group-append">
                                         <label for="inputCoverImage" class="btn btn-light m-0 rounded-pill px-4"> <i class="fas fa-cloud-upload-alt mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
                                     </div>
+                                    @error('cover_image')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @error('cover_image')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
                                 <!-- Uploaded image area-->
                                 <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
                             </div>

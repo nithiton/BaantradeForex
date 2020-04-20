@@ -41,7 +41,7 @@ class AdminNewsController extends Controller
             'slug' => ['bail','required', 'unique:news', 'max:255'],
             'short_content' => ['bail','required', 'max:255'],
             'content' => ['bail','required'],
-            'cover_image' => ['bail','image','mimes:jpeg,png,jpg','max:2048']
+            'cover_image' => ['bail','required','image','mimes:jpeg,png,jpg','max:2048','required']
         ]);
 
         $news = new News();
@@ -98,12 +98,21 @@ class AdminNewsController extends Controller
             'slug' => ['bail','required', 'unique:news,slug,'.$news->id, 'max:255'],
             'short_content' => ['bail','required', 'max:255'],
             'content' => ['bail','required'],
+            'cover_image' => ['sometimes','required','bail','image','mimes:jpeg,png,jpg','max:2048']
         ]);
 
         $news->title = $validatedData['title'];
         $news->slug = $validatedData['slug'];
         $news->short_content = $validatedData['short_content'];
         $news->content = $validatedData['content'];
+        if($request->has('cover_image') && isset($validatedData['cover_image'])){
+            $imageName = 'upload/images/news/'.$news->id.'/cover_image.'.$validatedData['cover_image']->extension();
+            $news->cover_image = $imageName;
+            //check if move file image fail
+            if(!$request->file('cover_image')->move(public_path('upload/images/news/'.$news->id.'/'), $imageName)){
+                return redirect(route('admin.news.create'))->with(['error' => 'move file failed.']);
+            }
+        }
         if($news->save()) {
             return redirect(route('admin.news.edit',[$news->slug]))->with(['success' => 'update success.']);
         }else{

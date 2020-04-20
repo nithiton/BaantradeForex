@@ -42,7 +42,7 @@ class AdminPostsController extends Controller
             'short_content' => ['bail','required', 'max:255'],
             'content' => ['bail','required'],
             'author' => ['bail','max:255'],
-            'cover_image' => ['bail','image','mimes:jpeg,png,jpg','max:2048']
+            'cover_image' => ['bail','required','image','mimes:jpeg,png,jpg','max:2048']
         ]);
 
         $post = new Posts();
@@ -101,6 +101,7 @@ class AdminPostsController extends Controller
             'short_content' => ['bail','required', 'max:255'],
             'content' => ['bail','required'],
             'author' => ['bail','max:255'],
+            'cover_image' => ['sometimes','required','bail','image','mimes:jpeg,png,jpg','max:2048']
         ]);
 
         $post->title = $validatedData['title'];
@@ -108,6 +109,14 @@ class AdminPostsController extends Controller
         $post->short_content = $validatedData['short_content'];
         $post->content = $validatedData['content'];
         $post->author = $validatedData['author'];
+        if($request->has('cover_image') && isset($validatedData['cover_image'])){
+            $imageName = 'upload/images/posts/'.$post->id.'/cover_image.'.$validatedData['cover_image']->extension();
+            $post->cover_image = $imageName;
+            //check if move file image fail
+            if(!$request->file('cover_image')->move(public_path('upload/images/posts/'.$post->id.'/'), $imageName)){
+                return redirect(route('admin.posts.create'))->with(['error' => 'move file failed.']);
+            }
+        }
         if($post->save()) {
             return redirect(route('admin.posts.edit',[$post->slug]))->with(['success' => 'update success.']);
         }else{
