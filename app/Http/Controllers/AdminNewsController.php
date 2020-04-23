@@ -52,7 +52,7 @@ class AdminNewsController extends Controller
         $imageName = 'upload/images/news/'.$news->getNextId().'/cover_image.'.$validatedData['cover_image']->extension();
         $news->cover_image = $imageName;
         //check if move file image fail
-        if(!$request->cover_image->move(public_path('upload/images/news/'.$news->getNextId().'/'), $imageName)){
+        if(!$request->file('cover_image')->move(public_path('upload/images/news/'.$news->getNextId().'/'), $imageName)){
             return redirect(route('admin.news.create'))->with(['error' => 'move file failed.']);
         }
         if($news->save()) {

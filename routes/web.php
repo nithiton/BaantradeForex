@@ -45,6 +45,12 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
     });
     Route::post('posts/{post_trash}/restore','AdminPostsController@restore')->name('posts.restore');
     Route::Resource('posts','AdminPostsController')->parameters(['posts'=>'post:slug']);
+
+    Route::bind('ad_trash', function($id) {
+        return \App\Models\Ads::withTrashed()->find($id);
+    });
+    Route::post('ads/{ad_trash}/restore','AdminAdsController@restore')->name('ads.restore');
+    Route::Resource('ads','AdminAdsController')->parameters(['ads'=>'ad:slug']);
 });
 Route::fallback(function () {
     //

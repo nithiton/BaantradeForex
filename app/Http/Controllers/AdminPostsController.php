@@ -54,7 +54,7 @@ class AdminPostsController extends Controller
         $imageName = 'upload/images/posts/'.$post->getNextId().'/cover_image.'.$validatedData['cover_image']->extension();
         $post->cover_image = $imageName;
         //check if move file image fail
-        if(!$request->cover_image->move(public_path('upload/images/posts/'.$post->getNextId().'/'), $imageName)){
+        if(!$request->file('cover_image')->move(public_path('upload/images/posts/'.$post->getNextId().'/'), $imageName)){
             return redirect(route('admin.posts.create'))->with(['error' => 'move file failed.']);
         }
         if($post->save()) {
@@ -96,8 +96,8 @@ class AdminPostsController extends Controller
     public function update(Request $request, Posts $post)
     {
         $validatedData = $request->validate([
-            'title' => ['bail','required', 'unique:news,title,'.$post->id, 'max:255'],
-            'slug' => ['bail','required', 'unique:news,slug,'.$post->id, 'max:255'],
+            'title' => ['bail','required', 'unique:posts,title,'.$post->id, 'max:255'],
+            'slug' => ['bail','required', 'unique:posts,slug,'.$post->id, 'max:255'],
             'short_content' => ['bail','required', 'max:255'],
             'content' => ['bail','required'],
             'author' => ['bail','max:255'],

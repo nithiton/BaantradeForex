@@ -52,7 +52,7 @@ class AdminActivitiesController extends Controller
         $imageName = 'upload/images/activities/'.$activity->getNextId().'/cover_image.'.$validatedData['cover_image']->extension();
         $activity->cover_image = $imageName;
         //check if move file image fail
-        if(!$request->cover_image->move(public_path('upload/images/activities/'.$activity->getNextId().'/'), $imageName)){
+        if(!$request->file('cover_image')->move(public_path('upload/images/activities/'.$activity->getNextId().'/'), $imageName)){
             return redirect(route('admin.activities.create'))->with(['error' => 'move file failed.']);
         }
         if($activity->save()) {
@@ -94,8 +94,8 @@ class AdminActivitiesController extends Controller
     public function update(Request $request, Activities $activity)
     {
         $validatedData = $request->validate([
-            'title' => ['bail','required', 'unique:news,title,'.$activity->id, 'max:255'],
-            'slug' => ['bail','required', 'unique:news,slug,'.$activity->id, 'max:255'],
+            'title' => ['bail','required', 'unique:activities,title,'.$activity->id, 'max:255'],
+            'slug' => ['bail','required', 'unique:activities,slug,'.$activity->id, 'max:255'],
             'short_content' => ['bail','required', 'max:255'],
             'content' => ['bail','required'],
             'cover_image' => ['sometimes','required','bail','image','mimes:jpeg,png,jpg','max:2048']

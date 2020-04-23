@@ -30,6 +30,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="{{ route('admin.ads.index') }}" class="nav-link {{ request()->path() == 'admin/ads' ? 'active' : '' }}">
+                <i class="nav-icon fas fa-ad"></i>
+                <p>Ads</p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{ route('admin.home') }}" class="nav-link {{ request()->path() == '' ? 'active' : '' }}">
                 <i class="nav-icon fab fa-leanpub"></i>
                 <p>Lesson</p>

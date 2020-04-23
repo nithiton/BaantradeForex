@@ -26,7 +26,7 @@
                                        value="{{ $errors->any() ? old('slug') : $new->slug }}">
                             </div>
                             <div class="form-group">
-                                <label for="inputSlug">Short content</label>
+                                <label for="inputShortContent">Short content</label>
                                 <input type="text" id="inputShortContent" name="short_content" class="form-control @error('short_content') is-invalid @enderror"
                                        maxlength="255" value="{{ $errors->any() ? old('short_content') : $new->short_content }}">
                                 @error('short_content')

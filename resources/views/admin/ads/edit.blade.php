@@ -7,15 +7,15 @@
             <div class="col ml-4 mr-4">
                 <div class="card card-secondary pb-3">
                     <div class="card-header">
-                        <h3 class="card-title">Create news</h3>
+                        <h3 class="card-title">Edit ad</h3>
                     </div>
-                    <form method="post" action="{{ route('admin.news.store') }}" enctype="multipart/form-data">
-                        {{ csrf_field() }}
+                    <form method="post" action="{{ route('admin.ads.update',[$ad->slug]) }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}{{ method_field('PUT') }}
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputTitle">Title</label>
                                 <input type="text" id="inputTitle" name="title" class="form-control @error('title') is-invalid @enderror"
-                                       autofocus value="{{ old('title') }}">
+                                       autofocus value="{{ $errors->any() ? old('title') : $ad->title }}">
                                 @error('title')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -23,45 +23,36 @@
                             <div class="form-group">
                                 <label for="inputSlug">Slug</label>
                                 <input type="text" id="inputSlug" name="slug" class="form-control" readonly tabindex="-1"
-                                       value="{{ old('slug') }}">
+                                       value="{{ $errors->any() ? old('slug') : $ad->slug }}">
                             </div>
                             <div class="form-group">
-                                <label for="inputShortContent">Short content</label>
-                                <input type="text" id="inputShortContent" name="short_content" class="form-control @error('short_content') is-invalid @enderror"
-                                       maxlength="255" value="{{ old('short_content') }}">
-                                @error('short_content')
+                                <label for="inputUrl">URL</label>
+                                <input type="text" id="inputUrl" name="url" class="form-control @error('url') is-invalid @enderror"
+                                       maxlength="255" value="{{ $errors->any() ? old('url') : $ad->url }}">
+                                @error('url')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="inputContent">Content</label>
-                                <textarea class="textarea @error('content') is-invalid @enderror" id="inputContent" name="content"
-                                          placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
-                                >{{ old('content') }}</textarea>
-                                @error('content')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="inputCoverImage">Cover image</label>
+                                <label for="inputImage">Image</label>
                                 <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                                    <input id="inputCoverImage" name="cover_image" type="file" onchange="readURL(this);" accept="image/jpeg,png,jpg"
-                                           value="{{ old('cover_image') }}" class="form-control border-0 @error('cover_image') is-invalid @enderror">
-                                    <label id="inputCoverImage-label" for="inputCoverImage" class="font-weight-light text-muted">Choose file</label>
+                                    <input id="inputImage" name="image" type="file" onchange="readURL(this);" accept="image/jpeg,png,jpg"
+                                           value="{{ old('image') }}" class="form-control border-0 @error('image') is-invalid @enderror">
+                                    <label id="inputImage-label" for="inputImage" class="font-weight-light text-muted">Choose file</label>
                                     <div class="input-group-append">
-                                        <label for="inputCoverImage" class="btn btn-light m-0 rounded-pill px-4"> <i class="fas fa-cloud-upload-alt mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                                        <label for="inputImage" class="btn btn-light m-0 rounded-pill px-4"> <i class="fas fa-cloud-upload-alt mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
                                     </div>
-                                    @error('cover_image')
+                                    @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <!-- Uploaded image area-->
-                                <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                                <div class="image-area mt-4"><img id="imageResult" src="{{ asset($ad->image) }}" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <input type="submit" value="Create" class="btn btn-success float-right">
-                        </div>
+                    <div class="col-12">
+                        <input type="submit" value="Edit" class="btn btn-success float-right">
+                    </div>
                     </form>
                     <!-- /.card-body -->
                 </div>
@@ -85,10 +76,10 @@
             $('#inputSlug').val($title);
         });
 
-        $('#inputCoverImage').on('change', function () {
+        $('#inputImage').on('change', function () {
             var input = event.srcElement;
             var fileName = input.files[0].name;
-            $('#inputCoverImage-label').text('File name: ' + fileName);
+            $('#inputImage-label').text('File name: ' + fileName);
 
             readURL(input);
         });
@@ -106,11 +97,11 @@
 @endsection
 @section('after-style')
     <style>
-        #inputCoverImage {
+        #inputImage {
             opacity: 0;
         }
 
-        #inputCoverImage-label {
+        #inputImage-label {
             position: absolute;
             top: 50%;
             left: 1rem;
@@ -139,7 +130,7 @@
         .image-area img {
             z-index: 2;
             position: relative;
-            max-height: 513px;
+            max-height: 200px;
             width: auto;
         }
     </style>
