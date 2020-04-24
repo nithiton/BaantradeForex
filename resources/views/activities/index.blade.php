@@ -14,7 +14,7 @@
                             <!-- Row -->
                             <div class="row">
                                 @forelse($activities as $index => $activity)
-                                    @component('component.activities.content')
+                                    @component('layouts.components.activities.content')
                                         @slot('route'){{ route('activities.show',[$activity->slug]) }}@endslot
                                         @slot('cover_image'){{ isset($activity->cover_image) ? asset($activity->cover_image) : 'http://placehold.it/330x247' }}@endslot
                                         @slot('title'){{ $activity->title }}@endslot
@@ -22,7 +22,7 @@
                                         @slot('created_at'){{ date('F j,Y',strtotime($activity->created_at)) }}@endslot
                                     @endcomponent
                                 @empty
-                                    @component('component.no_content')
+                                    @component('layouts.components.no_content')
                                     @endcomponent
                                 @endforelse
                             </div><!-- Row /- -->
@@ -31,8 +31,7 @@
                             <!-- Pagination /- -->
                         </div><!-- Content Area /- -->
                         <!-- Widget Area -->
-                        @component('component.widget_area_ad')
-                        @endcomponent
+                        <x-WidgetAreaAds></x-WidgetAreaAds>
                         <!-- Widget Area /- -->
                     </div>
                 </div><!-- Container /- -->

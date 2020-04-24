@@ -14,7 +14,7 @@
                             <!-- Row -->
                             <div class="row">
                                 @forelse($posts as $index => $post)
-                                    @component('component.posts.content')
+                                    @component('layouts.components.posts.content')
                                         @slot('route'){{ route('posts.show',[$post->slug]) }}@endslot
                                         @slot('cover_image'){{ isset($post->cover_image) ? asset($post->cover_image) : 'http://placehold.it/770x513' }}@endslot
                                         @slot('title'){{ $post->title }}@endslot
@@ -23,7 +23,7 @@
                                         @slot('created_at'){{ date('F j,Y',strtotime($post->created_at)) }}@endslot
                                     @endcomponent
                                 @empty
-                                    @component('component.no_content')
+                                    @component('layouts.components.no_content')
                                     @endcomponent
                                 @endforelse
                             </div><!-- Row /- -->
@@ -32,9 +32,8 @@
                         <!-- Pagination /- -->
                         </div><!-- Content Area -->
                         <!-- Widget Area -->
-                    @component('component.widget_area_ad')
-                    @endcomponent
-                    <!-- Widget Area /- -->
+                        <x-WidgetAreaAds></x-WidgetAreaAds>
+                        <!-- Widget Area /- -->
                     </div><!-- Row /- -->
                 </div><!-- Container /- -->
             </div><!-- Page Content /- -->

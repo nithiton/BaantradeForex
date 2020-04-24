@@ -29,8 +29,7 @@
                             </article>
                         </div><!-- Content Area /- -->
                         <!-- Widget Area -->
-                        @component('component.widget_area_ad')
-                        @endcomponent
+                        <x-WidgetAreaAds></x-WidgetAreaAds>
                         <!-- Widget Area /- -->
                     </div>
                 </div><!-- Container /- -->

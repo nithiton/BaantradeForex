@@ -64,7 +64,7 @@
 
         <!-- Sidebar -->
         <div class="sidebar">
-            @component('admin.layouts.component.sidebar_menu')
+            @component('admin.layouts.components.sidebar_menu')
             @endcomponent
         </div>
         <!-- /.sidebar -->
