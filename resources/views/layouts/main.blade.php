@@ -60,17 +60,17 @@
             <!-- Container -->
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-6">
+                    <div class="col-lg-3 col-6">
                         <ul class="top-social">
                             <li><a href="#" title="Facebook"><i class="ion-social-facebook-outline"></i></a></li>
                             {{--<li><a href="#" title="Twitter"><i class="ion-social-twitter-outline"></i></a></li>--}}
                             {{--<li><a href="#" title="Instagram"><i class="ion-social-instagram-outline"></i></a></li>--}}
                         </ul>
                     </div>
-                    <div class="col-lg-4 logo-block">
-                        <a href="index.html" title="Logo">{{ env('APP_NAME') }}</a>
+                    <div class="col-lg-6 logo-block">
+                        <a href="{{ route('home') }}" title="Logo">{{ env('APP_NAME') }}</a>
                     </div>
-                    <div class="col-lg-4 col-6">
+                    <div class="col-lg-3 col-6">
                         <ul class="top-right user-info">
                             <li><a href="#search-box" data-toggle="collapse" class="search collapsed" title="Search"><i class="pe-7s-search sr-ic-open"></i><i class="pe-7s-close sr-ic-close"></i></a></li>
                             {{--<li class="dropdown">--}}
@@ -93,7 +93,7 @@
         <!-- Menu Block -->
         <div class="container-fluid no-left-padding no-right-padding menu-block">
             <nav class="navbar ownavigation navbar-expand-lg">
-                <a class="navbar-brand" href="index.html">minimag</a>
+                <a class="navbar-brand" href="{{ route('home') }}">{{ env('APP_NAME') }}</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar7" aria-controls="navbar7" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
@@ -107,9 +107,8 @@
                             <i class="ddl-switch fa fa-angle-down"></i>
                             <a class="nav-link dropdown-toggle" title="Learning" href="">Learning</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="" title="Lesson 1">Lesson 1</a></li>
-                                <li><a class="dropdown-item" href="" title="Lesson 2">Lesson 2</a></li>
-                                <li><a class="dropdown-item" href="" title="Lesson 3">Lesson 3</a></li>
+                                <li><a class="dropdown-item" href="" title="Theater">Theater</a></li>
+                                <li><a class="dropdown-item" href="" title="Library">Library</a></li>
                             </ul>
                         </li>
                         <li><a class="nav-link " title="About Us" href="{{ route('about_us') }}">About Us</a></li>

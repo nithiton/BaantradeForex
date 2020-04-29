@@ -37,8 +37,8 @@ class AdminPostsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => ['bail','required', 'unique:news', 'max:255'],
-            'slug' => ['bail','required', 'unique:news', 'max:255'],
+            'title' => ['bail','required', 'unique:posts', 'max:255'],
+            'slug' => ['bail','required', 'unique:posts', 'max:255'],
             'short_content' => ['bail','required', 'max:255'],
             'content' => ['bail','required'],
             'author' => ['bail','max:255'],
