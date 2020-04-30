@@ -36,9 +36,15 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.home') }}" class="nav-link {{ request()->path() == '' ? 'active' : '' }}">
+            <a href="{{ route('admin.theaters.index') }}" class="nav-link {{ request()->path() == 'admin/theater' ? 'active' : '' }}">
+                <i class="nav-icon fas fa-tv"></i>
+                <p>Theater</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.home') }}" class="nav-link {{ request()->path() == 'admin/library' ? 'active' : '' }}">
                 <i class="nav-icon fab fa-leanpub"></i>
-                <p>Lesson</p>
+                <p>Library</p>
             </a>
         </li>
     </ul>
