@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Activities;
+use Illuminate\Support\Str;
 
 class AdminActivitiesController extends Controller
 {
@@ -36,6 +37,7 @@ class AdminActivitiesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:activities', 'max:255'],
             'slug' => ['bail','required', 'unique:activities', 'max:255'],
@@ -93,6 +95,7 @@ class AdminActivitiesController extends Controller
      */
     public function update(Request $request, Activities $activity)
     {
+        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:activities,title,'.$activity->id, 'max:255'],
             'slug' => ['bail','required', 'unique:activities,slug,'.$activity->id, 'max:255'],

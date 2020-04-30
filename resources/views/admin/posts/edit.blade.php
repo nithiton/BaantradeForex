@@ -14,16 +14,14 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputTitle">Title</label>
-                                <input type="text" id="inputTitle" name="title" class="form-control @error('title') is-invalid @enderror"
+                                <input type="text" id="inputTitle" name="title" class="form-control @error('title') is-invalid @enderror @error('slug') is-invalid @enderror"
                                        autofocus value="{{ $errors->any() ? old('title') : $post->title }}">
                                 @error('title')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="inputSlug">Slug</label>
-                                <input type="text" id="inputSlug" name="slug" class="form-control" readonly tabindex="-1"
-                                       value="{{ $errors->any() ? old('slug') : $post->slug }}">
+                                @error('slug')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="inputShortContent">Short content</label>
@@ -86,10 +84,6 @@
             toastr.error('{{ session()->get('error') }}');
             @endif
 
-        });
-        $('#inputTitle').keyup(function () {
-            $title =  $('#inputTitle').val().toLowerCase().split(' ').join('_');
-            $('#inputSlug').val($title);
         });
 
         $('#inputCoverImage').on('change', function () {

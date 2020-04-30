@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ads;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AdminAdsController extends Controller
 {
@@ -36,6 +37,7 @@ class AdminAdsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:ads', 'max:255'],
             'slug' => ['bail','required', 'unique:ads', 'max:255'],
@@ -91,6 +93,7 @@ class AdminAdsController extends Controller
      */
     public function update(Request $request, Ads $ad)
     {
+        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:ads,title,'.$ad->id, 'max:255'],
             'slug' => ['bail','required', 'unique:ads,slug,'.$ad->id, 'max:255'],

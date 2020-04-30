@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Posts;
+use Illuminate\Support\Str;
 
 class AdminPostsController extends Controller
 {
@@ -36,6 +37,7 @@ class AdminPostsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:posts', 'max:255'],
             'slug' => ['bail','required', 'unique:posts', 'max:255'],
@@ -95,6 +97,7 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, Posts $post)
     {
+        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:posts,title,'.$post->id, 'max:255'],
             'slug' => ['bail','required', 'unique:posts,slug,'.$post->id, 'max:255'],

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Theaters;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AdminTheatersController extends Controller
 {
@@ -36,6 +37,7 @@ class AdminTheatersController extends Controller
      */
     public function store(Request $request)
     {
+        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:theaters', 'max:255'],
             'slug' => ['bail','required', 'unique:theaters', 'max:255'],
@@ -86,6 +88,7 @@ class AdminTheatersController extends Controller
      */
     public function update(Request $request, Theaters  $theater)
     {
+        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:theaters,title,'.$theater->id, 'max:255'],
             'slug' => ['bail','required', 'unique:theaters,slug,'.$theater->id, 'max:255'],
