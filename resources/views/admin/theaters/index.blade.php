@@ -27,31 +27,31 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse($theaters as $index => $theater)
+                    @forelse($videos as $index => $video)
                     <tr>
-                        <td>{{ (($theaters->currentPage()-1)*$theaters->perPage())+($index+1) }}</td>
-                        <td>{{ $theater->title }}</td>
-                        <td>{{ $theater->url }}</td>
+                        <td>{{ (($videos->currentPage()-1)*$videos->perPage())+($index+1) }}</td>
+                        <td>{{ $video->title }}</td>
+                        <td>{{ $video->url }}</td>
                         <td class="project-state">
-                            @if(is_null($theater->deleted_at))
+                            @if(is_null($video->deleted_at))
                                 <span class="badge badge-success">Active</span>
                             @else
                                 <span class="badge badge-danger">Deleted</span>
                             @endif
                         </td>
                         <td class="project-actions text-right">
-                            @if(is_null($theater->deleted_at))
-                                <a class="btn btn-info btn-sm" href="{{ route('admin.theaters.edit',[$theater->slug]) }}">
+                            @if(is_null($video->deleted_at))
+                                <a class="btn btn-info btn-sm" href="{{ route('admin.theaters.edit',[$video->slug]) }}">
                                     <i class="fas fa-pencil-alt"></i>
                                     Edit
                                 </a>
                                 <a class="btn btn-danger btn-sm delete-record" href="#" data-toggle="modal" data-target="#confirm-modal"
-                                   data-url="{!! route('admin.theaters.destroy',[$theater->slug]) !!}">
+                                   data-url="{!! route('admin.theaters.destroy',[$video->slug]) !!}">
                                     <i class="fas fa-trash"></i>
                                     Delete
                                 </a>
                             @else
-                                <form method="post" action="{{ route('admin.theaters.restore',[$theater->id]) }}">
+                                <form method="post" action="{{ route('admin.theaters.restore',[$video->id]) }}">
                                     {{ csrf_field() }}
                                     <button class="btn btn-dark btn-sm" type="submit">
                                         <i class="fas fa-trash-restore"></i>
@@ -69,7 +69,7 @@
                     </tbody>
                 </table>
                 <div align="right">
-                    {{ $theaters->links() }}
+                    {{ $videos->links() }}
                 </div>
             </div>
             <!-- /.card-body -->

@@ -15,8 +15,8 @@ class AdminTheatersController extends Controller
      */
     public function index()
     {
-        $theaters = Theaters::withTrashed()->paginate(env('per_page'));
-        return view('admin.theaters.index',compact('theaters'));
+        $videos = Theaters::withTrashed()->paginate(env('per_page'));
+        return view('admin.theaters.index',compact('videos'));
     }
 
     /**
@@ -41,16 +41,16 @@ class AdminTheatersController extends Controller
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:theaters', 'max:255'],
             'slug' => ['bail','required', 'unique:theaters', 'max:255'],
-            'url' => ['bail','required','active_url', 'starts_with:https://www.youtube.com', 'max:255'],
+            'url' => ['bail','required','active_url', 'starts_with:https://www.youtube.com,https://youtube.com', 'max:255'],
             'short_content' => ['bail','required', 'max:255'],
         ]);
 
-        $theater = new Theaters();
-        $theater->title = $validatedData['title'];
-        $theater->slug = $validatedData['slug'];
-        $theater->url = $validatedData['url'];
-        $theater->short_content = $validatedData['short_content'];
-        if($theater->save()) {
+        $video = new Theaters();
+        $video->title = $validatedData['title'];
+        $video->slug = $validatedData['slug'];
+        $video->url = $validatedData['url'];
+        $video->short_content = $validatedData['short_content'];
+        if($video->save()) {
             return redirect(route('admin.theaters.index'))->with(['success' => 'create success.']);
         }else{
             return redirect(route('admin.theaters.create'))->with(['error' => 'create failed.']);
@@ -60,10 +60,10 @@ class AdminTheatersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Theaters  $theater
+     * @param  Theaters  $video
      * @return \Illuminate\Http\Response
      */
-    public function show(Theaters $theater)
+    public function show(Theaters $video)
     {
         //
     }
@@ -71,51 +71,51 @@ class AdminTheatersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Theaters  $theater
+     * @param  Theaters  $video
      * @return \Illuminate\Http\Response
      */
-    public function edit(Theaters  $theater)
+    public function edit(Theaters  $video)
     {
-        return view('admin.theaters.edit',['theater'=>$theater]);
+        return view('admin.theaters.edit',['video'=>$video]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Theaters  $theater
+     * @param  Theaters  $video
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Theaters  $theater)
+    public function update(Request $request, Theaters  $video)
     {
         $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
         $validatedData = $request->validate([
-            'title' => ['bail','required', 'unique:theaters,title,'.$theater->id, 'max:255'],
-            'slug' => ['bail','required', 'unique:theaters,slug,'.$theater->id, 'max:255'],
-            'url' => ['bail','required','active_url', 'starts_with:https://www.youtube.com', 'max:255'],
+            'title' => ['bail','required', 'unique:theaters,title,'.$video->id, 'max:255'],
+            'slug' => ['bail','required', 'unique:theaters,slug,'.$video->id, 'max:255'],
+            'url' => ['bail','required','active_url', 'starts_with:https://www.youtube.com,https://youtube.com', 'max:255'],
             'short_content' => ['bail','required', 'max:255'],
         ]);
 
-        $theater->title = $validatedData['title'];
-        $theater->slug = $validatedData['slug'];
-        $theater->url = $validatedData['url'];
-        $theater->short_content = $validatedData['short_content'];
-        if($theater->save()) {
-            return redirect(route('admin.theaters.edit',[$theater->slug]))->with(['success' => 'update success.']);
+        $video->title = $validatedData['title'];
+        $video->slug = $validatedData['slug'];
+        $video->url = $validatedData['url'];
+        $video->short_content = $validatedData['short_content'];
+        if($video->save()) {
+            return redirect(route('admin.theaters.edit',[$video->slug]))->with(['success' => 'update success.']);
         }else{
-            return redirect(route('admin.theaters.edit',[$theater->slug]))->with(['error' => 'update failed.']);
+            return redirect(route('admin.theaters.edit',[$video->slug]))->with(['error' => 'update failed.']);
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Theaters  $theater
+     * @param  Theaters  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Theaters  $theater)
+    public function destroy(Theaters  $video)
     {
-        if($theater->delete()) {
+        if($video->delete()) {
             return redirect(route('admin.theaters.index'))->with(['success' => 'delete success.']);
         }else{
             return redirect(route('admin.theaters.index'))->with(['error' => 'delete failed.']);
@@ -125,12 +125,12 @@ class AdminTheatersController extends Controller
     /**
      * Restore the specified resource from trash.
      *
-     * @param  Theaters  $theater
+     * @param  Theaters  $video
      * @return \Illuminate\Http\Response
      */
-    public function restore(Theaters  $theater)
+    public function restore(Theaters  $video)
     {
-        if($theater->restore()) {
+        if($video->restore()) {
             return redirect(route('admin.theaters.index'))->with(['success' => 'restore success.']);
         }else{
             return redirect(route('admin.theaters.index'))->with(['error' => 'restore failed.']);

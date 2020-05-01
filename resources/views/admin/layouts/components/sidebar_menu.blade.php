@@ -12,33 +12,33 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item ">
-            <a href="{{ route('admin.news.index') }}" class="nav-link {{ request()->path() == 'admin/news' ? 'active' : '' }}">
+            <a href="{{ route('admin.news.index') }}" class="nav-link {{ request()->is('admin/news*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-columns"></i>
                 <p>News</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.activities.index') }}" class="nav-link {{ request()->path() == 'admin/activities' ? 'active' : '' }}">
+            <a href="{{ route('admin.activities.index') }}" class="nav-link {{ request()->is('admin/activities*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-people-carry"></i>
                 <p>Activities</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.posts.index') }}" class="nav-link {{ request()->path() == 'admin/posts' ? 'active' : '' }}">
+            <a href="{{ route('admin.posts.index') }}" class="nav-link {{ request()->is('admin/posts*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>Posts</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.ads.index') }}" class="nav-link {{ request()->path() == 'admin/ads' ? 'active' : '' }}">
+            <a href="{{ route('admin.ads.index') }}" class="nav-link {{ request()->is('admin/ads*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-ad"></i>
                 <p>Ads</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.theaters.index') }}" class="nav-link {{ request()->path() == 'admin/theater' ? 'active' : '' }}">
+            <a href="{{ route('admin.theaters.index') }}" class="nav-link {{ request()->is('admin/theaters*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-tv"></i>
-                <p>Theater</p>
+                <p>Theaters</p>
             </a>
         </li>
         <li class="nav-item">

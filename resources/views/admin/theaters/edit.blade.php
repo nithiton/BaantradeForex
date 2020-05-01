@@ -9,13 +9,13 @@
                     <div class="card-header">
                         <h3 class="card-title">Edit theater</h3>
                     </div>
-                    <form method="post" action="{{ route('admin.theaters.update',[$theater->slug]) }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('admin.theaters.update',[$video->slug]) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}{{ method_field('PUT') }}
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputTitle">Title</label>
                                 <input type="text" id="inputTitle" name="title" class="form-control @error('title') is-invalid @enderror @error('slug') is-invalid @enderror"
-                                       autofocus value="{{ $errors->any() ? old('title') : $theater->title }}">
+                                       autofocus value="{{ $errors->any() ? old('title') : $video->title }}">
                                 @error('title')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -26,7 +26,7 @@
                             <div class="form-group">
                                 <label for="inputUrl">URL</label>
                                 <input type="text" id="inputUrl" name="url" class="form-control @error('url') is-invalid @enderror"
-                                       maxlength="255" value="{{ $errors->any() ? old('url') : $theater->url }}">
+                                       maxlength="255" value="{{ $errors->any() ? old('url') : $video->url }}">
                                 @error('url')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 <label for="inputShortContent">Short content</label>
                                 <input type="text" id="inputShortContent" name="short_content" class="form-control @error('short_content') is-invalid @enderror"
-                                       maxlength="255" value="{{ $errors->any() ? old('short_content') : $theater->short_content }}">
+                                       maxlength="255" value="{{ $errors->any() ? old('short_content') : $video->short_content }}">
                                 @error('short_content')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

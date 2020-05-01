@@ -52,11 +52,11 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
     Route::post('ads/{ad_trash}/restore','AdminAdsController@restore')->name('ads.restore');
     Route::Resource('ads','AdminAdsController')->parameters(['ads'=>'ad:slug']);
 
-    Route::bind('theater_trash', function($id) {
+    Route::bind('video_trash', function($id) {
         return \App\Models\Theaters::withTrashed()->find($id);
     });
-    Route::post('theaters/{theater_trash}/restore','AdminTheatersController@restore')->name('theaters.restore');
-    Route::Resource('theaters','AdminTheatersController')->parameters(['theaters'=>'theater:slug']);
+    Route::post('theaters/{video_trash}/restore','AdminTheatersController@restore')->name('theaters.restore');
+    Route::Resource('theaters','AdminTheatersController')->parameters(['theaters'=>'video:slug']);
 });
 Route::fallback(function () {
     //
