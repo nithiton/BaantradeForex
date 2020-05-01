@@ -42,9 +42,9 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.home') }}" class="nav-link {{ request()->path() == 'admin/library' ? 'active' : '' }}">
+            <a href="{{ route('admin.lessons.index') }}" class="nav-link {{ request()->is('admin/lessons*') ? 'active' : '' }}">
                 <i class="nav-icon fab fa-leanpub"></i>
-                <p>Library</p>
+                <p>Lessons</p>
             </a>
         </li>
     </ul>

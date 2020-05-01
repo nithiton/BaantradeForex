@@ -57,6 +57,12 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
     });
     Route::post('theaters/{video_trash}/restore','AdminTheatersController@restore')->name('theaters.restore');
     Route::Resource('theaters','AdminTheatersController')->parameters(['theaters'=>'video:slug']);
+
+    Route::bind('lesson_trash', function($id) {
+        return \App\Models\Lessons::withTrashed()->find($id);
+    });
+    Route::post('lessons/{lesson_trash}/restore','AdminLessonsController@restore')->name('lessons.restore');
+    Route::Resource('lessons','AdminLessonsController')->parameters(['lessons'=>'lesson:slug']);
 });
 Route::fallback(function () {
     //
