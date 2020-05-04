@@ -12,25 +12,26 @@
                         <!-- Content Area -->
                         <div class="col-xl-8 col-lg-8 col-md-6 col-12 content-area">
                             <article class="type-post">
-                                <div class="entry-cover">
-                                    <img src="{{ isset($post->cover_image) ? asset($post->cover_image) : 'http://placehold.it/770x513' }}" alt="Post"  style="width: 770px;height: 513px;object-fit: contain;"/>
-                                </div>
                                 <div class="entry-content w-100">
                                     <div class="entry-header">
-                                        <span class="post-category"><a href="#" title="Posts">Posts</a></span>
-                                        <h3 class="entry-title">{{ $post->title }}</h3>
+                                        {{--<span class="post-category"><a href="#" title="News">News</a></span>--}}
+                                        <h3 class="entry-title">{{ $video->title }}</h3>
                                         <div class="post-meta">
-                                            <span class="byline">by <a href="#" title="{{ $post->author }}">{{ $post->author }}</a></span>
-                                            <span class="post-date">{{ date('F j,Y',strtotime($post->created_at)) }}</span>
+                                            {{--<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>--}}
+                                            <span class="post-date">{{ date('F j,Y',strtotime($video->created_at)) }}</span>
                                         </div>
                                     </div>
-                                    {!! $post->content !!}
+                                    <p>{{ $video->short_content }}</p>
+                                    <hr/>
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="{{ $video->url }}"></iframe>
+                                    </div>
                                 </div>
                             </article>
                         </div><!-- Content Area /- -->
                         <!-- Widget Area -->
                         <x-WidgetAreaAds></x-WidgetAreaAds>
-                    <!-- Widget Area /- -->
+                        <!-- Widget Area /- -->
                     </div>
                 </div><!-- Container /- -->
             </div><!-- Page Content /- -->

@@ -44,6 +44,7 @@ class AdminTheatersController extends Controller
             'url' => ['bail','required','active_url', 'starts_with:https://www.youtube.com,https://youtube.com', 'max:255'],
             'short_content' => ['bail','required', 'max:255'],
         ]);
+        $validatedData['url'] = Str::of($validatedData['url'])->replace('watch?v=','embed/');
 
         $video = new Theaters();
         $video->title = $validatedData['title'];
@@ -95,6 +96,7 @@ class AdminTheatersController extends Controller
             'url' => ['bail','required','active_url', 'starts_with:https://www.youtube.com,https://youtube.com', 'max:255'],
             'short_content' => ['bail','required', 'max:255'],
         ]);
+        $validatedData['url'] = Str::of($validatedData['url'])->replace('watch?v=','embed/');
 
         $video->title = $validatedData['title'];
         $video->slug = $validatedData['slug'];

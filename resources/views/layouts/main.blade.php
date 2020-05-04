@@ -104,10 +104,10 @@
                         <li><a class="nav-link " title="Activities" href="{{ route('activities.index') }}">Activities</a></li>
                         <li><a class="nav-link " title="Posts" href="{{ route('posts.index') }}">Posts</a></li>
                         <li class="dropdown">
-                            <i class="ddl-switch fa fa-angle-down"></i>
-                            <a class="nav-link dropdown-toggle" title="Learning" href="">Learning</a>
+                            <i class="ddl-switch fa fa-angle-down" id="learning-dropdown-toggle"></i>
+                            <a class="nav-link dropdown-toggle" onclick="toggleDropdown()" title="Learning" href="#">Learning</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="" title="Theater">Theater</a></li>
+                                <li><a class="dropdown-item" href="{{ route('theaters.index') }}" title="Theaters">Theaters</a></li>
                                 <li><a class="dropdown-item" href="" title="Library">Library</a></li>
                             </ul>
                         </li>
@@ -172,6 +172,10 @@
 
 <!-- Library - Theme JS -->
 <script src="{{ asset('minimag/js/functions.js') }}"></script>
-
+<script>
+    function toggleDropdown() {
+        $('#learning-dropdown-toggle').click();
+    }
+</script>
 </body>
 </html>

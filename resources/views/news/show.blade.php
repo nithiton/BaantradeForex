@@ -15,7 +15,7 @@
                                 <div class="entry-cover">
                                     <img src="{{ isset($new->cover_image) ? asset($new->cover_image) : 'http://placehold.it/770x513' }}" alt="Post"  style="width: 770px;height: 513px;object-fit: contain;"/>
                                 </div>
-                                <div class="entry-content">
+                                <div class="entry-content w-100">
                                     <div class="entry-header">
                                         <span class="post-category"><a href="#" title="News">News</a></span>
                                         <h3 class="entry-title">{{ $new->title }}</h3>
