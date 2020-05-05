@@ -19,6 +19,7 @@ class CreateLessonsTable extends Migration
             $table->string('title');
             $table->string('short_content');
             $table->longText('content');
+            $table->bigInteger('viewed')->default(0);
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

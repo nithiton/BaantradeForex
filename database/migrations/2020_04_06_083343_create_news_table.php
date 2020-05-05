@@ -20,6 +20,7 @@ class CreateNewsTable extends Migration
             $table->text('short_content');
             $table->longText('content');
             $table->string('cover_image')->nullable();
+            $table->bigInteger('viewed')->default(0);
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

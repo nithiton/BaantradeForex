@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->longText('content');
             $table->string('cover_image')->nullable();
             $table->string('author')->nullable();
+            $table->bigInteger('viewed')->default(0);
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

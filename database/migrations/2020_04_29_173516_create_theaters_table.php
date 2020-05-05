@@ -19,6 +19,7 @@ class CreateTheatersTable extends Migration
             $table->string('title');
             $table->string('url');
             $table->string('short_content');
+            $table->bigInteger('viewed')->default(0);
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });
