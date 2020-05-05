@@ -6,7 +6,7 @@
                 <h3 class="entry-title"><a href="{{ $route }}" title="{{ $title }}">{{ $title}} </a></h3>
             </div>
             {{--<p>{{ $content }}</p>--}}
-            <a href="{{ $route }}" title="Read More">Read More</a>
+            <a href="{{ $route }}" title="Read More"><i class="fas fa-eye"></i> {{ $viewed }} | Read More</a>
         </div>
     </div>
 </div>

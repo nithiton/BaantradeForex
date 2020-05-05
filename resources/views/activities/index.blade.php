@@ -18,6 +18,7 @@
                                         @slot('route'){{ route('activities.show',[$activity->slug]) }}@endslot
                                         @slot('cover_image'){{ isset($activity->cover_image) ? asset($activity->cover_image) : 'http://placehold.it/330x247' }}@endslot
                                         @slot('title'){{ $activity->title }}@endslot
+                                        @slot('viewed'){{ $activity->viewed }}@endslot
                                         @slot('content'){{ $activity->short_content }}@endslot
                                         @slot('created_at'){{ date('F j,Y',strtotime($activity->created_at)) }}@endslot
                                     @endcomponent

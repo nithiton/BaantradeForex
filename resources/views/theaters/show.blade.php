@@ -18,7 +18,7 @@
                                         <h3 class="entry-title">{{ $video->title }}</h3>
                                         <div class="post-meta">
                                             {{--<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>--}}
-                                            <span class="post-date">{{ date('F j,Y',strtotime($video->created_at)) }}</span>
+                                            <span class="post-date"><i class="fas fa-eye"></i> {{ $video->viewed }} | {{ date('F j,Y',strtotime($video->created_at)) }}</span>
                                         </div>
                                     </div>
                                     <p>{{ $video->short_content }}</p>

@@ -41,6 +41,8 @@
     <script src="{{ asset('minimag/js/html5/respond.min.js') }}"></script>
     <![endif]-->
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
 </head>
 
 <body data-offset="200" data-spy="scroll" data-target=".ownavigation">

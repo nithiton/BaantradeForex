@@ -21,7 +21,7 @@
                                         <h3 class="entry-title">{{ $activity->title }}</h3>
                                         <div class="post-meta">
                                             {{--<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>--}}
-                                            <span class="post-date">{{ date('F j,Y',strtotime($activity->created_at)) }}</span>
+                                            <span class="post-date"><i class="fas fa-eye"></i> {{ $activity->viewed }} | {{ date('F j,Y',strtotime($activity->created_at)) }}</span>
                                         </div>
                                     </div>
                                     {!! $activity->content !!}

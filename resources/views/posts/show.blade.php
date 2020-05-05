@@ -21,7 +21,7 @@
                                         <h3 class="entry-title">{{ $post->title }}</h3>
                                         <div class="post-meta">
                                             <span class="byline">by <a href="#" title="{{ $post->author }}">{{ $post->author }}</a></span>
-                                            <span class="post-date">{{ date('F j,Y',strtotime($post->created_at)) }}</span>
+                                            <span class="post-date"><i class="fas fa-eye"></i> {{ $post->viewed }} | {{ date('F j,Y',strtotime($post->created_at)) }}</span>
                                         </div>
                                     </div>
                                     {!! $post->content !!}

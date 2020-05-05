@@ -21,7 +21,7 @@
                                         <h3 class="entry-title">{{ $new->title }}</h3>
                                         <div class="post-meta">
                                             {{--<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>--}}
-                                            <span class="post-date">{{ date('F j,Y',strtotime($new->created_at)) }}</span>
+                                            <span class="post-date"><i class="fas fa-eye"></i> {{ $new->viewed }} | {{ date('F j,Y',strtotime($new->created_at)) }}</span>
                                         </div>
                                     </div>
                                     {!! $new->content !!}

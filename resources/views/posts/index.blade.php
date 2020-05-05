@@ -18,6 +18,7 @@
                                         @slot('route'){{ route('posts.show',[$post->slug]) }}@endslot
                                         @slot('cover_image'){{ isset($post->cover_image) ? asset($post->cover_image) : 'http://placehold.it/770x513' }}@endslot
                                         @slot('title'){{ $post->title }}@endslot
+                                        @slot('viewed'){{ $post->viewed }}@endslot
                                         @slot('content'){{ $post->short_content }}@endslot
                                         @slot('author'){{ $post->author }}@endslot
                                         @slot('created_at'){{ date('F j,Y',strtotime($post->created_at)) }}@endslot

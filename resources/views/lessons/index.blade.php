@@ -19,6 +19,7 @@
                                         @slot('route'){{ route('lessons.show',[$lesson->slug]) }}@endslot
 {{--                                        @slot('cover_image'){{ isset($video->cover_image) ? asset($video->cover_image) : 'http://placehold.it/330x247' }}@endslot--}}
                                         @slot('title'){{ $lesson->title }}@endslot
+                                        @slot('viewed'){{ $lesson->viewed }}@endslot
                                         @slot('content'){{ $lesson->short_content }}@endslot
                                         @slot('created_at'){{ date('F j,Y',strtotime($lesson->created_at)) }}@endslot
                                     @endcomponent

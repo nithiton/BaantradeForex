@@ -19,6 +19,7 @@
                                         @slot('route'){{ route('theaters.show',[$video->slug]) }}@endslot
 {{--                                        @slot('cover_image'){{ isset($video->cover_image) ? asset($video->cover_image) : 'http://placehold.it/330x247' }}@endslot--}}
                                         @slot('title'){{ $video->title }}@endslot
+                                        @slot('viewed'){{ $video->viewed }}@endslot
                                         @slot('content'){{ $video->short_content }}@endslot
                                         @slot('created_at'){{ date('F j,Y',strtotime($video->created_at)) }}@endslot
                                     @endcomponent
