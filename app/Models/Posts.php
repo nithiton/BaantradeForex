@@ -30,4 +30,9 @@ class Posts extends Model
         return $statement[0]->Auto_increment;
     }
 
+    public function addViewed(){
+        $this->viewed += 1;
+        $this->save();
+    }
+
 }

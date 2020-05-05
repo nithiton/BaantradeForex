@@ -29,4 +29,9 @@ class News extends Model
         $statement = DB::select("show table status like 'news'");
         return $statement[0]->Auto_increment;
     }
+
+    public function addViewed(){
+        $this->viewed += 1;
+        $this->save();
+    }
 }

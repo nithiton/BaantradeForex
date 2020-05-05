@@ -22,4 +22,9 @@ class Lessons extends Model
             $builder->orderBy('created_at', 'desc');
         });
     }
+
+    public function addViewed(){
+        $this->viewed += 1;
+        $this->save();
+    }
 }
