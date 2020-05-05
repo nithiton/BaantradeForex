@@ -26,6 +26,9 @@ Route::Resource('posts','PostsController')
 Route::Resource('theaters','TheatersController')
     ->parameters(['theaters'=>'video:slug'])->only(['index','show']);
 
+Route::Resource('lessons','LessonsController')
+    ->parameters(['lessons'=>'lesson:slug'])->only(['index','show']);
+
 Route::get('about_us','MainController@indexAboutUs')->name('about_us');
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {

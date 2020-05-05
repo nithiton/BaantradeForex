@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Theaters;
+use App\Models\Lessons;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Session;
 
-class TheatersController extends Controller
+class LessonsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,30 +16,30 @@ class TheatersController extends Controller
      */
     public function index()
     {
-        $videos = Theaters::paginate(env('PER_PAGE'));
-        return view('theaters.index',compact('videos'));
+        $lessons = Lessons::paginate(env('PER_PAGE'));
+        return view('lessons.index',compact('lessons'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Theaters  $video
+     * @param  Lessons  $lesson
      * @return \Illuminate\Http\Response
      */
-    public function show(Theaters  $video)
+    public function show(Lessons  $lesson)
     {
-        if(!Session::has('theaters')){
-            Session::put('theaters',[$video->id=>true]);
+        if(!Session::has('lessons')){
+            Session::put('lessons',[$lesson->id=>true]);
             Session::save();
             dd('count+1');
         }else{
-            if(!Arr::has(Session::get('theaters'),$video->id)){
-                Session::put('theaters',[$video->id=>true]);
+            if(!Arr::has(Session::get('lessons'),$lesson->id)){
+                Session::put('lessons',[$lesson->id=>true]);
                 Session::save();
                 dd('count+1');
             }
         }
-        return view('theaters.show',['video'=>$video]);
+        return view('lessons.show',['lesson'=>$lesson]);
     }
 
 }

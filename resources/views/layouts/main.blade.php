@@ -108,7 +108,7 @@
                             <a class="nav-link dropdown-toggle" onclick="toggleDropdown()" title="Learning" href="#">Learning</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ route('theaters.index') }}" title="Theaters">Theaters</a></li>
-                                <li><a class="dropdown-item" href="" title="Library">Library</a></li>
+                                <li><a class="dropdown-item" href="{{ route('lessons.index') }}" title="Lessons">Lessons</a></li>
                             </ul>
                         </li>
                         <li><a class="nav-link " title="About Us" href="{{ route('about_us') }}">About Us</a></li>
