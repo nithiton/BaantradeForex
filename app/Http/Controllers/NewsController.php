@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Session;
 
 class NewsController extends Controller
 {
@@ -26,6 +28,17 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
+        if(!Session::has('news')){
+            Session::put('news',[$news->id=>true]);
+            Session::save();
+            $news->addViewed();
+        }else{
+            if(!Arr::has(Session::get('news'),$news->id)){
+                Session::put('news',[$news->id=>true]);
+                Session::save();
+                $news->addViewed();
+            }
+        }
         return view('news.show',['new'=>$news]);
     }
 

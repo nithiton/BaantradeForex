@@ -31,12 +31,12 @@ class LessonsController extends Controller
         if(!Session::has('lessons')){
             Session::put('lessons',[$lesson->id=>true]);
             Session::save();
-            dd('count+1');
+            $lesson->addViewed();
         }else{
             if(!Arr::has(Session::get('lessons'),$lesson->id)){
                 Session::put('lessons',[$lesson->id=>true]);
                 Session::save();
-                dd('count+1');
+                $lesson->addViewed();
             }
         }
         return view('lessons.show',['lesson'=>$lesson]);

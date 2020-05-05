@@ -31,12 +31,12 @@ class TheatersController extends Controller
         if(!Session::has('theaters')){
             Session::put('theaters',[$video->id=>true]);
             Session::save();
-            dd('count+1');
+            $video->addViewed();
         }else{
             if(!Arr::has(Session::get('theaters'),$video->id)){
                 Session::put('theaters',[$video->id=>true]);
                 Session::save();
-                dd('count+1');
+                $video->addViewed();
             }
         }
         return view('theaters.show',['video'=>$video]);
