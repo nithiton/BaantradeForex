@@ -37,7 +37,7 @@ class AdminLessonsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
+        $request->merge(['slug' => Str::slug($request->input('title'),'_','TH')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:activities', 'max:255'],
             'slug' => ['bail','required', 'unique:activities', 'max:255'],
@@ -88,7 +88,7 @@ class AdminLessonsController extends Controller
      */
     public function update(Request $request, Lessons $lesson)
     {
-        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
+        $request->merge(['slug' => Str::slug($request->input('title'),'_','TH')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:lessons,title,'.$lesson->id, 'max:255'],
             'slug' => ['bail','required', 'unique:lessons,slug,'.$lesson->id, 'max:255'],

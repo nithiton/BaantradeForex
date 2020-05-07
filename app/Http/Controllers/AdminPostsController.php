@@ -37,7 +37,7 @@ class AdminPostsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
+        $request->merge(['slug' => Str::slug($request->input('title'),'_','TH')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:posts', 'max:255'],
             'slug' => ['bail','required', 'unique:posts', 'max:255'],
@@ -97,7 +97,7 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, Posts $post)
     {
-        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
+        $request->merge(['slug' => Str::slug($request->input('title'),'_','TH')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:posts,title,'.$post->id, 'max:255'],
             'slug' => ['bail','required', 'unique:posts,slug,'.$post->id, 'max:255'],

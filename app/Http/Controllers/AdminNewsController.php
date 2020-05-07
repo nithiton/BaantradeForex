@@ -37,7 +37,7 @@ class AdminNewsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
+        $request->merge(['slug' => Str::slug($request->input('title'),'_','TH')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:news', 'max:255'],
             'slug' => ['bail','required', 'unique:news', 'max:255'],
@@ -95,7 +95,7 @@ class AdminNewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
+        $request->merge(['slug' => Str::slug($request->input('title'),'_','TH')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:news,title,'.$news->id, 'max:255'],
             'slug' => ['bail','required', 'unique:news,slug,'.$news->id, 'max:255'],

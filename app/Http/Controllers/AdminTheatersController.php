@@ -37,7 +37,7 @@ class AdminTheatersController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
+        $request->merge(['slug' => Str::slug($request->input('title'),'_','TH')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:theaters', 'max:255'],
             'slug' => ['bail','required', 'unique:theaters', 'max:255'],
@@ -89,7 +89,7 @@ class AdminTheatersController extends Controller
      */
     public function update(Request $request, Theaters  $video)
     {
-        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
+        $request->merge(['slug' => Str::slug($request->input('title'),'_','TH')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:theaters,title,'.$video->id, 'max:255'],
             'slug' => ['bail','required', 'unique:theaters,slug,'.$video->id, 'max:255'],

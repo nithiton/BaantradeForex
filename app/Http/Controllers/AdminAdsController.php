@@ -37,7 +37,7 @@ class AdminAdsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
+        $request->merge(['slug' => Str::slug($request->input('title'),'_','TH')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:ads', 'max:255'],
             'slug' => ['bail','required', 'unique:ads', 'max:255'],
@@ -93,7 +93,7 @@ class AdminAdsController extends Controller
      */
     public function update(Request $request, Ads $ad)
     {
-        $request->merge(['slug' => Str::slug($request->input('title'),'_')]);
+        $request->merge(['slug' => Str::slug($request->input('title'),'_','TH')]);
         $validatedData = $request->validate([
             'title' => ['bail','required', 'unique:ads,title,'.$ad->id, 'max:255'],
             'slug' => ['bail','required', 'unique:ads,slug,'.$ad->id, 'max:255'],
