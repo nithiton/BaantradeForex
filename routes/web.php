@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes(['register' => false]);
-Route::get('/', function () {return view('home');})->name('home');
+
+Route::get('/', 'MainController@indexHome')->name('home');
+Route::get('about_us','MainController@indexAboutUs')->name('about_us');
+
 Route::Resource('news','NewsController')
     ->parameters(['news'=>'news:slug'])->only(['index','show']);
 
@@ -29,7 +32,6 @@ Route::Resource('theaters','TheatersController')
 Route::Resource('lessons','LessonsController')
     ->parameters(['lessons'=>'lesson:slug'])->only(['index','show']);
 
-Route::get('about_us','MainController@indexAboutUs')->name('about_us');
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
     Route::get('/','MainController@indexAdmin')->name('home');
