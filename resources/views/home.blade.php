@@ -18,7 +18,7 @@
                         <div class="col-lg-8 col-md-6 content-area">
                             <!-- Row News -->
                             <div class="row">
-                                <h3>News<hr/></h3>
+                                <h3><a href="{{ route('news.index') }}" style="color:#000;text-decoration-line: none;">News</a><hr/></h3>
                                 @forelse($news as $index => $new)
                                     @component('layouts.components.home.content')
                                         @slot('route'){{ route('news.show',[$new->slug]) }}@endslot
@@ -37,7 +37,7 @@
                             </div><!-- Row /- -->
                             <!-- Row Posts-->
                             <div class="row">
-                                <h3>Posts<hr/></h3>
+                                <h3><a href="{{ route('posts.index') }}" style="color:#000;text-decoration-line: none;">Posts</a><hr/></h3>
                                 @forelse($posts as $index => $post)
                                     @component('layouts.components.home.content')
                                         @slot('route'){{ route('posts.show',[$post->slug]) }}@endslot
@@ -57,7 +57,7 @@
                             </div><!-- Row /- -->
                             <!-- Row Activities -->
                             <div class="row">
-                                <h3>Activities<hr/></h3>
+                                <h3><a href="{{ route('activities.index') }}" style="color:#000;text-decoration-line: none;">Activities</a><hr/></h3>
                                 @forelse($activities as $index => $activity)
                                     @component('layouts.components.home.content')
                                         @slot('route'){{ route('activities.show',[$activity->slug]) }}@endslot

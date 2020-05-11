@@ -1,6 +1,7 @@
 <footer class="container-fluid no-left-padding no-right-padding footer-main">
     <!-- Container -->
     <div class="container">
+        <hr/>
         <ul class="ftr-social">
             <li><a href="{{ env('FACEBOOK_URL') }}" title="Facebook"><i class="fab fa-facebook"></i>{{ env('FACEBOOK_NAME') }}</a></li>
             <li><a href="{{ env('YOUTUBE_URL') }}" title="Youtube"><i class="fab fa-youtube"></i>{{ env('YOUTUBE_NAME') }}</a></li>

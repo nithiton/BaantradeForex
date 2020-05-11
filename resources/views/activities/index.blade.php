@@ -32,7 +32,25 @@
                             <!-- Pagination /- -->
                         </div><!-- Content Area /- -->
                         <!-- Widget Area -->
-                        <x-WidgetAreaAds></x-WidgetAreaAds>
+                        <div class="col-lg-4 col-md-6 widget-area">
+                            <div class="row">
+                                <!-- Search Box -->
+                                <div class="w-100">
+                                    <form>
+                                        <div class="input-group w-75 float-right">
+                                            <input type="text" class="form-control" placeholder="Search..." required>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-secondary" type="submit">
+                                                    <i class="pe-7s-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div><!-- Search Box /- -->
+                            </div>
+                            <br/>
+                            <x-WidgetAreaAds></x-WidgetAreaAds>
+                        </div>
                         <!-- Widget Area /- -->
                     </div>
                 </div><!-- Container /- -->
