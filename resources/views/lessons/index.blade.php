@@ -11,7 +11,7 @@
                     <!-- Row -->
                     <div class="row">
                         <!-- Content Area -->
-                        <div class="col-lg-8 col-md-6 content-area">
+                        <div class="col-lg-8 col-md-8 content-area">
                             <!-- Row -->
                             <div class="row">
                                 @forelse($lessons as $index => $lesson)
@@ -33,7 +33,7 @@
                             <!-- Pagination /- -->
                         </div><!-- Content Area -->
                         <!-- Widget Area -->
-                        <div class="col-lg-4 col-md-6 widget-area">
+                        <div class="col-lg-4 col-md-4 widget-area">
                             <div class="row">
                                 <!-- Search Box -->
                                 <div class="w-100">

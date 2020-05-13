@@ -15,7 +15,7 @@
                     <!-- Row -->
                     <div class="row">
                         <!-- Content Area -->
-                        <div class="col-lg-8 col-md-6 content-area">
+                        <div class="col-lg-8 col-md-8 content-area">
                             <!-- Row News -->
                             <div class="row">
                                 <h3><a href="{{ route('news.index') }}" style="color:#000;text-decoration-line: none;">News</a><hr/></h3>
@@ -76,7 +76,9 @@
                             </div><!-- Row /- -->
                         </div><!-- Content Area -->
                         <!-- Widget Area -->
-                        <x-WidgetAreaAds></x-WidgetAreaAds>
+                        <div class="col-lg-4 col-md-4 widget-area">
+                            <x-WidgetAreaAds></x-WidgetAreaAds>
+                        </div>
                         <!-- Widget Area /- -->
                     </div><!-- Row /- -->
                 </div><!-- Container /- -->

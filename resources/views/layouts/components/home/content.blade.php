@@ -1,4 +1,4 @@
-<div class="col-12 col-lg-12 col-md-6 col-sm-6 blog-paralle">
+<div class="col-12 blog-paralle">
     <div class="type-post">
         <div class="entry-cover">
             <div class="post-meta">

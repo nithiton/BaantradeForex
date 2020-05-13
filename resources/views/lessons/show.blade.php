@@ -10,7 +10,7 @@
                 <div class="container">
                     <div class="row">
                         <!-- Content Area -->
-                        <div class="col-xl-8 col-lg-8 col-md-6 col-12 content-area">
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-12 content-area">
                             <article class="type-post">
                                 <div class="entry-content w-100">
                                     <div class="entry-header">
@@ -26,7 +26,9 @@
                             </article>
                         </div><!-- Content Area /- -->
                         <!-- Widget Area -->
-                        <x-WidgetAreaAds></x-WidgetAreaAds>
+                        <div class="col-lg-4 col-md-4 widget-area">
+                            <x-WidgetAreaAds></x-WidgetAreaAds>
+                        </div>
                         <!-- Widget Area /- -->
                     </div>
                 </div><!-- Container /- -->
