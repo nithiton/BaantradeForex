@@ -141,7 +141,7 @@
         .image-area img {
             z-index: 2;
             position: relative;
-            max-height: 513px;
+            max-height: 450px;
             width: auto;
         }
     </style>

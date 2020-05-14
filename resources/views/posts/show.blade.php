@@ -13,7 +13,7 @@
                         <div class="col-xl-8 col-lg-8 col-md-8 col-12 content-area">
                             <article class="type-post">
                                 <div class="entry-cover">
-                                    <img src="{{ isset($post->cover_image) ? asset($post->cover_image) : 'http://placehold.it/770x513' }}" alt="Post"  style="width: 770px;height: 513px;object-fit: contain;"/>
+                                    <img src="{{ isset($post->cover_image) ? asset($post->cover_image) : 'http://placehold.it/770x450' }}" alt="Post"  style="width: 770px;height: 513px;object-fit: contain;"/>
                                 </div>
                                 <div class="entry-content w-100">
                                     <div class="entry-header">

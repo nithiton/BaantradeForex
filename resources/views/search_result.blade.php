@@ -4,8 +4,8 @@
 
         <main class="site-main">
 
-            <!-- Page Content -->
-            <div class="container-fluid no-left-padding no-right-padding page-content blog-single">
+            <!-- Slider Section -->
+            <div class="container-fluid no-left-padding no-right-padding slider-section slider-section2">
                 <!-- Container -->
                 <div class="container">
                     <div class="row">
@@ -16,7 +16,7 @@
                                 @forelse($posts as $index => $post)
                                     @component('layouts.components.posts.content')
                                         @slot('route'){{ route('posts.show',[$post->slug]) }}@endslot
-                                        @slot('cover_image'){{ isset($post->cover_image) ? asset($post->cover_image) : 'http://placehold.it/770x450' }}@endslot
+                                        @slot('cover_image'){{ isset($post->cover_image) ? asset($post->cover_image) : 'http://placehold.it/770x513' }}@endslot
                                         @slot('title'){{ $post->title }}@endslot
                                         @slot('viewed'){{ $post->viewed }}@endslot
                                         @slot('content'){{ $post->short_content }}@endslot

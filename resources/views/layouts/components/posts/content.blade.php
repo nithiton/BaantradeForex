@@ -5,7 +5,7 @@
                 <span class="byline">by <a href="#" title="{{ $author }}">{{ $author }}</a></span>
                 <span class="post-date"><a href="#">{{ $created_at }}</a></span>
             </div>
-            <a href="{{ $route }}"><img src="{{ $cover_image }}" alt="Post" style="width: 770px;height: 513px;object-fit: contain;"/></a>
+            <a href="{{ $route }}"><img src="{{ $cover_image }}" alt="Post" style="width: 770px;height: 450px;object-fit: contain;"/></a>
         </div>
         <div class="entry-content">
             <div class="entry-header">
