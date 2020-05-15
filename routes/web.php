@@ -21,6 +21,7 @@ Route::get('/news/search_result','NewsController@search')->name('news.search');
 Route::Resource('news','NewsController')
     ->parameters(['news'=>'news:slug'])->only(['index','show']);
 
+Route::get('/activities/search_result','ActivitiesController@search')->name('activities.search');
 Route::Resource('activities','ActivitiesController')
     ->parameters(['activities'=>'activity:slug'])->only(['index','show']);
 

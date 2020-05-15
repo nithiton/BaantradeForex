@@ -15,7 +15,7 @@
                             <div class="row">
                                 <div class="type-post">
                                     <div class="entry-header">
-                                        <h3 class="entry-title"><a title="Activities">Activities</a></h3>
+                                        <h3 class="entry-title"><a title="Search result">Search result of "{{ request('search_query') }}"</a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -36,17 +36,17 @@
                                 @endforelse
                             </div><!-- Row /- -->
                             <!-- Pagination -->
-                            {{ $activities->onEachSide(2)->links('layouts.pagination.minimag') }}
+                            {{ $activities->onEachSide(2)->appends(request()->except('page'))->links('layouts.pagination.minimag') }}
                             <!-- Pagination /- -->
-                        </div><!-- Content Area /- -->
+                        </div><!-- Content Area -->
                         <!-- Widget Area -->
                         <div class="col-lg-4 col-md-4 widget-area">
                             <div class="row">
                                 <!-- Search Box -->
                                 <div class="w-100">
-                                    <form method="get" target="_blank" action="{{ route('activities.search') }}" enctype="multipart/form-data">
+                                    <form method="get" action="{{ route('activities.search') }}" enctype="multipart/form-data">
                                         <div class="input-group w-75 float-right">
-                                            <input type="text" class="form-control" name="search_query" placeholder="Search..." required>
+                                            <input type="text" class="form-control" name="search_query" placeholder="Search..." value="{{ request('search_query') }}" required>
                                             <span class="input-group-btn">
                                                 <button class="btn btn-secondary" type="submit">
                                                     <i class="pe-7s-search"></i>

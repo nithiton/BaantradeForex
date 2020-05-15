@@ -35,4 +35,9 @@ class Activities extends Model
         $this->save();
     }
 
+    public static function search($search_query){
+        $search_query = "%".$search_query."%";
+        return static::where('title','LIKE',$search_query)->orWhere('short_content','LIKE',$search_query);
+    }
+
 }

@@ -42,4 +42,15 @@ class ActivitiesController extends Controller
         return view('activities.show',['activity'=>$activity]);
     }
 
+    /**
+     * Display a listing of search.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
+    {
+        $activities = Activities::search(request('search_query'))->paginate(env('PER_PAGE'));
+        return view('activities.search',compact('activities'));
+    }
+
 }
