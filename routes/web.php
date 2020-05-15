@@ -29,6 +29,7 @@ Route::get('/posts/search_result','PostsController@search')->name('posts.search'
 Route::Resource('posts','PostsController')
     ->parameters(['posts'=>'post:slug'])->only(['index','show']);
 
+Route::get('/theaters/search_result','TheatersController@search')->name('theaters.search');
 Route::Resource('theaters','TheatersController')
     ->parameters(['theaters'=>'video:slug'])->only(['index','show']);
 

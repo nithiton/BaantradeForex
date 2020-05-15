@@ -42,4 +42,15 @@ class TheatersController extends Controller
         return view('theaters.show',['video'=>$video]);
     }
 
+    /**
+     * Display a listing of search.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
+    {
+        $videos = Theaters::search(request('search_query'))->paginate(env('PER_PAGE'));
+        return view('theaters.search',compact('videos'));
+    }
+
 }
