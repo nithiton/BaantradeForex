@@ -49,6 +49,9 @@ class NewsController extends Controller
      */
     public function search()
     {
+        if(!request()->filled('search_query')){
+            return redirect()->to(route('news.index'));
+        }
         $news = News::search(request('search_query'))->paginate(env('PER_PAGE'));
         return view('news.search',compact('news'));
     }

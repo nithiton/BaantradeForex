@@ -49,6 +49,9 @@ class TheatersController extends Controller
      */
     public function search()
     {
+        if(!request()->filled('search_query')){
+            return redirect()->to(route('theaters.index'));
+        }
         $videos = Theaters::search(request('search_query'))->paginate(env('PER_PAGE'));
         return view('theaters.search',compact('videos'));
     }

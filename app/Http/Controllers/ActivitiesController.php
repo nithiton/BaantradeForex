@@ -49,6 +49,9 @@ class ActivitiesController extends Controller
      */
     public function search()
     {
+        if(!request()->filled('search_query')){
+            return redirect()->to(route('activities.index'));
+        }
         $activities = Activities::search(request('search_query'))->paginate(env('PER_PAGE'));
         return view('activities.search',compact('activities'));
     }

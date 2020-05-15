@@ -49,6 +49,9 @@ class PostsController extends Controller
      */
     public function search()
     {
+        if(!request()->filled('search_query')){
+            return redirect()->to(route('posts.index'));
+        }
         $posts = Posts::search(request('search_query'))->paginate(env('PER_PAGE'));
         return view('posts.search',compact('posts'));
     }

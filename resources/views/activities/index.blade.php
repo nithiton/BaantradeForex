@@ -44,7 +44,7 @@
                             <div class="row">
                                 <!-- Search Box -->
                                 <div class="w-100">
-                                    <form method="get" target="_blank" action="{{ route('activities.search') }}" enctype="multipart/form-data">
+                                    <form method="get" action="{{ route('activities.search') }}" enctype="multipart/form-data">
                                         <div class="input-group w-75 float-right">
                                             <input type="text" class="form-control" name="search_query" placeholder="Search..." required>
                                             <span class="input-group-btn">

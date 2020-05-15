@@ -46,7 +46,7 @@
                                 <div class="w-100">
                                     <form method="get" action="{{ route('lessons.search') }}" enctype="multipart/form-data">
                                         <div class="input-group w-75 float-right">
-                                            <input type="text" class="form-control" name="search_query" placeholder="Search..." value="{{ request('search_query') }}" required>
+                                            <input type="text" class="form-control" name="search_query" placeholder="Search..." value="{{ request('search_query') }}" >
                                             <span class="input-group-btn">
                                                 <button class="btn btn-secondary" type="submit">
                                                     <i class="pe-7s-search"></i>
