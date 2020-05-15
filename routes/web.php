@@ -25,6 +25,7 @@ Route::get('/activities/search_result','ActivitiesController@search')->name('act
 Route::Resource('activities','ActivitiesController')
     ->parameters(['activities'=>'activity:slug'])->only(['index','show']);
 
+Route::get('/posts/search_result','PostsController@search')->name('posts.search');
 Route::Resource('posts','PostsController')
     ->parameters(['posts'=>'post:slug'])->only(['index','show']);
 

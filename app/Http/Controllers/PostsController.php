@@ -42,4 +42,15 @@ class PostsController extends Controller
         return view('posts.show',['post'=>$post]);
     }
 
+    /**
+     * Display a listing of search.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
+    {
+        $posts = Posts::search(request('search_query'))->paginate(env('PER_PAGE'));
+        return view('posts.search',compact('posts'));
+    }
+
 }
