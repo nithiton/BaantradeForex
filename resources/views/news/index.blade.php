@@ -12,6 +12,13 @@
                     <div class="row">
                         <!-- Content Area -->
                         <div class="col-lg-8 col-md-8 content-area">
+                            <div class="row">
+                                <div class="type-post">
+                                    <div class="entry-header">
+                                        <h3 class="entry-title"><a title="News">News</a></h3>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Row -->
                             <div class="row">
                                 @forelse($news as $index => $new)
@@ -37,9 +44,9 @@
                             <div class="row">
                                 <!-- Search Box -->
                                 <div class="w-100">
-                                    <form>
+                                    <form method="get" target="_blank" action="{{ route('news.search') }}" enctype="multipart/form-data">
                                         <div class="input-group w-75 float-right">
-                                            <input type="text" class="form-control" placeholder="Search..." required>
+                                            <input type="text" class="form-control" name="search_query" placeholder="Search..." required>
                                             <span class="input-group-btn">
                                                 <button class="btn btn-secondary" type="submit">
                                                     <i class="pe-7s-search"></i>

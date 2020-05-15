@@ -17,6 +17,7 @@ Auth::routes(['register' => false]);
 Route::get('/', 'MainController@indexHome')->name('home');
 Route::get('about_us','MainController@indexAboutUs')->name('about_us');
 
+Route::get('/news/search_result','NewsController@search')->name('news.search');
 Route::Resource('news','NewsController')
     ->parameters(['news'=>'news:slug'])->only(['index','show']);
 

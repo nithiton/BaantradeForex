@@ -4,24 +4,31 @@
 
         <main class="site-main">
 
-            <!-- Slider Section -->
-            <div class="container-fluid no-left-padding no-right-padding slider-section slider-section2">
+            <!-- Page Content -->
+            <div class="container-fluid no-left-padding no-right-padding page-content blog-paralle-post">
                 <!-- Container -->
                 <div class="container">
+                    <!-- Row -->
                     <div class="row">
                         <!-- Content Area -->
                         <div class="col-lg-8 col-md-8 content-area">
+                            <div class="row">
+                                <div class="type-post">
+                                    <div class="entry-header">
+                                        <h3 class="entry-title"><a title="Search result">Search result of "{{ request('search_query') }}"</a></h3>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Row -->
                             <div class="row">
-                                @forelse($posts as $index => $post)
-                                    @component('layouts.components.posts.content')
-                                        @slot('route'){{ route('posts.show',[$post->slug]) }}@endslot
-                                        @slot('cover_image'){{ isset($post->cover_image) ? asset($post->cover_image) : 'http://placehold.it/770x513' }}@endslot
-                                        @slot('title'){{ $post->title }}@endslot
-                                        @slot('viewed'){{ $post->viewed }}@endslot
-                                        @slot('content'){{ $post->short_content }}@endslot
-                                        @slot('author'){{ $post->author }}@endslot
-                                        @slot('created_at'){{ date('F j,Y',strtotime($post->created_at)) }}@endslot
+                                @forelse($news as $index => $new)
+                                    @component('layouts.components.news.content')
+                                        @slot('route'){{ route('news.show',[$new->slug]) }}@endslot
+                                        @slot('cover_image'){{ isset($new->cover_image) ? asset($new->cover_image) : 'http://placehold.it/330x247' }}@endslot
+                                        @slot('title'){{ $new->title }}@endslot
+                                        @slot('viewed'){{ $new->viewed }}@endslot
+                                        @slot('content'){{ $new->short_content }}@endslot
+                                        @slot('created_at'){{ date('F j,Y',strtotime($new->created_at)) }}@endslot
                                     @endcomponent
                                 @empty
                                     @component('layouts.components.no_content')
@@ -29,17 +36,17 @@
                                 @endforelse
                             </div><!-- Row /- -->
                             <!-- Pagination -->
-                        {{ $posts->onEachSide(2)->links('layouts.pagination.minimag') }}
-                        <!-- Pagination /- -->
+                            {{ $news->onEachSide(2)->appends(request()->except('page'))->links('layouts.pagination.minimag') }}
+                            <!-- Pagination /- -->
                         </div><!-- Content Area -->
                         <!-- Widget Area -->
                         <div class="col-lg-4 col-md-4 widget-area">
                             <div class="row">
                                 <!-- Search Box -->
                                 <div class="w-100">
-                                    <form>
+                                    <form method="get" action="{{ route('news.search') }}" enctype="multipart/form-data">
                                         <div class="input-group w-75 float-right">
-                                            <input type="text" class="form-control" placeholder="Search..." required>
+                                            <input type="text" class="form-control" name="search_query" placeholder="Search..." value="{{ request('search_query') }}" required>
                                             <span class="input-group-btn">
                                                 <button class="btn btn-secondary" type="submit">
                                                     <i class="pe-7s-search"></i>

@@ -42,4 +42,14 @@ class NewsController extends Controller
         return view('news.show',['new'=>$news]);
     }
 
+    /**
+     * Display a listing of search.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
+    {
+        $news = News::search(request('search_query'))->paginate(env('PER_PAGE'));
+        return view('news.search',compact('news'));
+    }
 }
