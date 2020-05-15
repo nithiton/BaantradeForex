@@ -15,7 +15,7 @@
                             <div class="row">
                                 <div class="type-post">
                                     <div class="entry-header">
-                                        <h3 class="entry-title"><a title="Lessons">Lessons</a></h3>
+                                        <h3 class="entry-title"><a title="Search result">Search result of "{{ request('search_query') }}"</a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -24,7 +24,7 @@
                                 @forelse($lessons as $index => $lesson)
                                     @component('layouts.components.lessons.content')
                                         @slot('route'){{ route('lessons.show',[$lesson->slug]) }}@endslot
-{{--                                        @slot('cover_image'){{ isset($video->cover_image) ? asset($video->cover_image) : 'http://placehold.it/330x247' }}@endslot--}}
+                                        {{--                                        @slot('cover_image'){{ isset($video->cover_image) ? asset($video->cover_image) : 'http://placehold.it/330x247' }}@endslot--}}
                                         @slot('title'){{ $lesson->title }}@endslot
                                         @slot('viewed'){{ $lesson->viewed }}@endslot
                                         @slot('content'){{ $lesson->short_content }}@endslot
@@ -36,7 +36,7 @@
                                 @endforelse
                             </div><!-- Row /- -->
                             <!-- Pagination -->
-                            {{ $lessons->onEachSide(2)->links('layouts.pagination.minimag') }}
+                            {{ $lessons->onEachSide(2)->appends(request()->except('page'))->links('layouts.pagination.minimag') }}
                             <!-- Pagination /- -->
                         </div><!-- Content Area -->
                         <!-- Widget Area -->
@@ -44,9 +44,9 @@
                             <div class="row">
                                 <!-- Search Box -->
                                 <div class="w-100">
-                                    <form method="get" target="_blank" action="{{ route('lessons.search') }}" enctype="multipart/form-data">
+                                    <form method="get" action="{{ route('lessons.search') }}" enctype="multipart/form-data">
                                         <div class="input-group w-75 float-right">
-                                            <input type="text" class="form-control" name="search_query" placeholder="Search..." required>
+                                            <input type="text" class="form-control" name="search_query" placeholder="Search..." value="{{ request('search_query') }}" required>
                                             <span class="input-group-btn">
                                                 <button class="btn btn-secondary" type="submit">
                                                     <i class="pe-7s-search"></i>

@@ -33,6 +33,7 @@ Route::get('/theaters/search_result','TheatersController@search')->name('theater
 Route::Resource('theaters','TheatersController')
     ->parameters(['theaters'=>'video:slug'])->only(['index','show']);
 
+Route::get('/lessons/search_result','LessonsController@search')->name('lessons.search');
 Route::Resource('lessons','LessonsController')
     ->parameters(['lessons'=>'lesson:slug'])->only(['index','show']);
 

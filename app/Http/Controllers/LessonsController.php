@@ -42,4 +42,15 @@ class LessonsController extends Controller
         return view('lessons.show',['lesson'=>$lesson]);
     }
 
+    /**
+     * Display a listing of search.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
+    {
+        $lessons = Lessons::search(request('search_query'))->paginate(env('PER_PAGE'));
+        return view('lessons.search',compact('lessons'));
+    }
+
 }
