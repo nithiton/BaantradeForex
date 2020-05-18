@@ -45,6 +45,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
         return \App\Models\News::withTrashed()->find($id);
     });
     Route::post('news/{news_trash}/restore','AdminNewsController@restore')->name('news.restore');
+    Route::get('/news/search_result','AdminNewsController@search')->name('news.search');
     Route::Resource('news','AdminNewsController')->parameters(['news'=>'news:slug']);
 
     Route::bind('activity_trash', function($id) {
