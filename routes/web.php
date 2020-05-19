@@ -66,6 +66,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
         return \App\Models\Ads::withTrashed()->find($id);
     });
     Route::post('ads/{ad_trash}/restore','AdminAdsController@restore')->name('ads.restore');
+    Route::get('/ads/search_result','AdminAdsController@search')->name('ads.search');
     Route::Resource('ads','AdminAdsController')->parameters(['ads'=>'ad:slug']);
 
     Route::bind('video_trash', function($id) {

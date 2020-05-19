@@ -29,4 +29,9 @@ class Ads extends Model
         $statement = DB::select("show table status like 'ads'");
         return $statement[0]->Auto_increment;
     }
+
+    public static function search($search_query){
+        $search_query = "%".$search_query."%";
+        return static::where('title','LIKE',$search_query)->orWhere('url','LIKE',$search_query);
+    }
 }
