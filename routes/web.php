@@ -80,6 +80,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
         return \App\Models\Lessons::withTrashed()->find($id);
     });
     Route::post('lessons/{lesson_trash}/restore','AdminLessonsController@restore')->name('lessons.restore');
+    Route::get('/lessons/search_result','AdminLessonsController@search')->name('lessons.search');
     Route::Resource('lessons','AdminLessonsController')->parameters(['lessons'=>'lesson:slug']);
 });
 Route::fallback(function () {
