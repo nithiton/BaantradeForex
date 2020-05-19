@@ -59,6 +59,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
         return \App\Models\Posts::withTrashed()->find($id);
     });
     Route::post('posts/{post_trash}/restore','AdminPostsController@restore')->name('posts.restore');
+    Route::get('/posts/search_result','AdminPostsController@search')->name('posts.search');
     Route::Resource('posts','AdminPostsController')->parameters(['posts'=>'post:slug']);
 
     Route::bind('ad_trash', function($id) {

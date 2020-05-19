@@ -13,7 +13,7 @@
                         <div class="col-8">
                             <form method="get" action="{{ route('admin.posts.search') }}" enctype="multipart/form-data">
                                 <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" name="search_query" placeholder="Search..." required>
+                                    <input type="text" class="form-control" name="search_query" placeholder="Search..." value="{{ request('search_query') }}">
                                     <div class="input-group-append mr-3">
                                         <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                                     </div>
@@ -85,7 +85,7 @@
                     </tbody>
                 </table>
                 <div align="right">
-                    {{ $posts->links() }}
+                    {{ $posts->appends(request()->except('page'))->links() }}
                 </div>
             </div>
             <!-- /.card-body -->
