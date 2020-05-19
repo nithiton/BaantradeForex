@@ -152,4 +152,18 @@ class AdminActivitiesController extends Controller
             return redirect(route('admin.activities.index'))->with(['error' => 'restore failed.']);
         }
     }
+
+    /**
+     * Display a listing of search.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
+    {
+        if(!request()->filled('search_query')){
+            return redirect()->to(route('admin.activities.index'));
+        }
+        $activities = Activities::search(request('search_query'))->paginate(env('PER_PAGE'));
+        return view('admin.activities.search',compact('activities'));
+    }
 }

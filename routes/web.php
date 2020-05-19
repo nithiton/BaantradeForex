@@ -52,6 +52,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
         return \App\Models\Activities::withTrashed()->find($id);
     });
     Route::post('activities/{activity_trash}/restore','AdminActivitiesController@restore')->name('activities.restore');
+    Route::get('/activities/search_result','AdminActivitiesController@search')->name('activities.search');
     Route::Resource('activities','AdminActivitiesController')->parameters(['activities'=>'activity:slug']);
 
     Route::bind('post_trash', function($id) {
