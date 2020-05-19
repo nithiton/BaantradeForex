@@ -138,4 +138,18 @@ class AdminTheatersController extends Controller
             return redirect(route('admin.theaters.index'))->with(['error' => 'restore failed.']);
         }
     }
+
+    /**
+     * Display a listing of search.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
+    {
+        if(!request()->filled('search_query')){
+            return redirect()->to(route('admin.theaters.index'));
+        }
+        $videos = Theaters::search(request('search_query'))->paginate(env('PER_PAGE'));
+        return view('admin.theaters.search',compact('videos'));
+    }
 }

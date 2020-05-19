@@ -73,6 +73,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
         return \App\Models\Theaters::withTrashed()->find($id);
     });
     Route::post('theaters/{video_trash}/restore','AdminTheatersController@restore')->name('theaters.restore');
+    Route::get('/theaters/search_result','AdminTheatersController@search')->name('theaters.search');
     Route::Resource('theaters','AdminTheatersController')->parameters(['theaters'=>'video:slug']);
 
     Route::bind('lesson_trash', function($id) {
