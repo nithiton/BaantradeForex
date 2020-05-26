@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activities;
+use App\Models\Lessons;
 use App\Models\News;
 use App\Models\Posts;
+use App\Models\Theaters;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -37,6 +39,13 @@ class MainController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function indexAdmin(){
-        return view('admin.home');
+        $limit = env('PER_DASHBOARD');
+        $news = News::withoutGlobalScope('lasted')->orderBy('viewed','desc')->limit($limit)->get();
+        $posts = Posts::withoutGlobalScope('lasted')->orderBy('viewed','desc')->limit($limit)->get();
+        $activities = Activities::withoutGlobalScope('lasted')->orderBy('viewed','desc')->limit($limit)->get();
+
+        $lessons = Lessons::withoutGlobalScope('lasted')->orderBy('viewed','desc')->limit($limit)->get();
+        $videos = Theaters::withoutGlobalScope('lasted')->orderBy('viewed','desc')->limit($limit)->get();
+        return view('admin.home',compact('news','posts','activities','lessons','videos'));
     }
 }
