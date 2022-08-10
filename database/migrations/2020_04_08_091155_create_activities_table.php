@@ -14,7 +14,7 @@ class CreateActivitiesTable extends Migration
     public function up()
     {
         Schema::create('activities', function (Blueprint $table) {
-            $table->id('id')->primary();
+            $table->id('id');
             $table->string('slug')->index('activities_slug');
             $table->string('title');
             $table->text('short_content');
