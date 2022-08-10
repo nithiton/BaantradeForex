@@ -14,7 +14,7 @@ class CreateTheatersTable extends Migration
     public function up()
     {
         Schema::create('theaters', function (Blueprint $table) {
-            $table->id('id')->index('primary_key');
+            $table->id('id')->primary();
             $table->string('slug')->index('theaters_slug');
             $table->string('title');
             $table->string('url');

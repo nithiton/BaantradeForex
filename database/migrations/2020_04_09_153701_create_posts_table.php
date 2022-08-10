@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id('id')->index('primary_key');
+            $table->id('id')->primary();
             $table->string('slug')->index('posts_slug');
             $table->string('title');
             $table->text('short_content');
